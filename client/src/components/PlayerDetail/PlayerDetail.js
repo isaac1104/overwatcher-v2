@@ -8,6 +8,13 @@ class PlayerDetail extends Component {
     fetchPlayerData(id);
   }
 
+  componentDidUpdate(prevProps) {
+    const { fetchPlayerData, match: { params: { id } } } = this.props;
+    if (prevProps.match.params.id !== id) {
+      fetchPlayerData(id);
+    }
+  }
+
   render() {
     console.log(this.props.playerData);
     return (

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Button, message } from 'antd';
+import { Button } from 'antd';
 import FormField from './FormField';
 import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
