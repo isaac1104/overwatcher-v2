@@ -14,7 +14,21 @@ class PlayerDetailCard extends Component {
       }]);
       const top3Heroes = allHeroes.splice(allHeroes.length -3, allHeroes.length).reverse();
       return top3Heroes.map(hero => {
-        return <h6 className='lead' key={hero.name}>{hero.name}</h6>
+        return <h6 className='lead' key={hero.name} onClick={() => console.log(hero.name)}>{hero.name}</h6>
+      });
+    } else {
+      return <div />
+    }
+  }
+
+  renderAllHeroes() {
+    const { data } = this.props.playerData;
+    if (data.competitiveStats) {
+      const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
+        return { name: key, value }
+      }).filter(hero => hero.name !== 'allHeroes');
+      return allHeroes.map(hero => {
+        return <h6 key={hero.name}>{hero.name}</h6>
       });
     } else {
       return <div />
@@ -61,6 +75,9 @@ class PlayerDetailCard extends Component {
                       {this.renderTop3Heroes()}
                     </div>
                   </Card>
+                  <Card title='All Heroes'>
+                    {this.renderAllHeroes()}
+                  </Card>
                 </Fragment>
               ) : (
                 <div />
@@ -76,7 +93,7 @@ class PlayerDetailCard extends Component {
   }
 
   render() {
-    console.log(this.props.playerData.data);
+    // console.log(this.props.playerData.data);
     return (
       <Fragment>
         {this.renderDetail()}
