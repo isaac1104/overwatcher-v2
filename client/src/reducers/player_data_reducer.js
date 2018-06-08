@@ -2,7 +2,8 @@ import { REQUEST_PLAYER_DATA, RECEIVE_PLAYER_DATA, PLAYER_DATA_ERROR } from '../
 
 const INITIAL_STATE = {
   isFetching: false,
-  data: []
+  error: false,
+  data: {}
 }
 
 function playerDataReducer(state = INITIAL_STATE, action) {
@@ -16,12 +17,14 @@ function playerDataReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         isFetching: false,
+        error: false,
         data: action.payload
       }
     case PLAYER_DATA_ERROR:
       return {
         ...state,
         isFetching: false,
+        error: true,
         data: action.payload
       }
     default:

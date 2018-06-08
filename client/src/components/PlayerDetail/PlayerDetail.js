@@ -17,9 +17,10 @@ class PlayerDetail extends Component {
 
   render() {
     console.log(this.props.playerData);
+    const { error, data } = this.props.playerData;
     return (
       <div>
-        <h1>{this.props.match.params.id}</h1>
+        <h1>{error ? data : data.name}</h1>
       </div>
     );
   }
