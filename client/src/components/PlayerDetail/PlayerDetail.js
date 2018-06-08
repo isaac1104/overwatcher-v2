@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PlayerDetailCard from './PlayerDetailCard';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
@@ -33,9 +33,9 @@ class PlayerDetail extends Component {
   render() {
     const { isFetching } = this.props.playerData;
     return (
-      <Fragment>
+      <div className='container'>
         {this.renderPlayerDetail()}
-      </Fragment>
+      </div>
     );
   }
 }
