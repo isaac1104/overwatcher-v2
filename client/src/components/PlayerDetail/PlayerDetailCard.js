@@ -13,29 +13,29 @@ class PlayerDetailCard extends Component {
         <div>
           <div className='d-flex align-items-center' style={{ backgroundColor: '#eee' }}>
             <img src={data.icon} className='img-fluid' alt='icon' />
-            <h1>{data.name}</h1>
+            <h1 className='display-4 ml-3 mt-2'>{data.name}</h1>
           </div>
           <Card style={{ backgroundColor: '#8a8a8a' }} className='col-sm-6'>
             <div className='row'>
               <div className='col-sm-4'>
                 <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '150px' }} />
               </div>
-              <div className='col-sm-8 lead' style={{ marginTop: '20px' }}>
+              <div className='col-sm-8' style={{ marginTop: '20px' }}>
                 <h3>{data.ratingName}</h3>
-                <h3>{data.rating} Points</h3>
+                <h3 className='lead'>{data.rating} Points</h3>
               </div>
             </div>
             <Divider />
             {data.competitiveStats ? (
-              <div className='row text-center lead'>
+              <div className='row text-center'>
                 <Card className='col-sm-4' title='Win Rate' bordered={ false }>
                   <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                 </Card>
                 <Card className='col-sm-4' title='Time Played' bordered={ false }>
-                  <h6>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
+                  <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
                 </Card>
-                <Card className='col-sm-4' title='Win Rate' bordered={ false }>
-                  <h6>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
+                <Card className='col-sm-4' title='Games Won' bordered={ false }>
+                  <h6 className='lead'>{data.gamesWon} Games</h6>
                 </Card>
               </div>
             ) : (
