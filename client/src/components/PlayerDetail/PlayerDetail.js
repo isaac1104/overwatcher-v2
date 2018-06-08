@@ -31,7 +31,6 @@ class PlayerDetail extends Component {
   }
 
   render() {
-    const { isFetching } = this.props.playerData;
     return (
       <div className='container'>
         {this.renderPlayerDetail()}
