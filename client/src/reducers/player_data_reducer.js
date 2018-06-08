@@ -12,23 +12,23 @@ function playerDataReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         isFetching: action.payload
-      }
+      };
     case RECEIVE_PLAYER_DATA:
       return {
         ...state,
         isFetching: false,
         error: false,
         data: action.payload
-      }
+      };
     case PLAYER_DATA_ERROR:
       return {
         ...state,
         isFetching: false,
         error: true,
         data: action.payload
-      }
+      };
     default:
-      return state
+      return state;
   }
 }
 

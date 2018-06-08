@@ -1,11 +1,13 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
+import HeroDetail from '../HeroDetail/HeroDetail';
 import { Card } from 'antd';
 import { connect } from 'react-redux';
+import { fetchHeroData } from '../../actions';
 
 class PlayerDetailCard extends Component {
   renderTop3Heroes() {
-    const { data } = this.props.playerData;
+    const { playerData: { data }, fetchHeroData } = this.props;
     if (data.competitiveStats) {
       const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
         return { name: key, value }
@@ -13,7 +15,7 @@ class PlayerDetailCard extends Component {
         return b.value.game.gamesWon - a.value.game.gamesWon;
       }).splice(0, 3);
       return top3Heroes.map(hero => {
-        return <h6 className='lead' key={hero.name} onClick={() => console.log(hero.name, hero.value)}>{hero.name}</h6>
+        return <h6 className='lead' key={hero.name} onClick={() => fetchHeroData(hero)}>{hero.name}</h6>
       });
     } else {
       return <div />
@@ -21,13 +23,13 @@ class PlayerDetailCard extends Component {
   }
 
   renderAllHeroes() {
-    const { data } = this.props.playerData;
+    const { playerData: { data }, fetchHeroData } = this.props;
     if (data.competitiveStats) {
       const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
         return { name: key, value }
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
-        return <h6 key={hero.name} onClick={() => console.log(hero.name, hero.value)}>{hero.name}</h6>
+        return <h6 key={hero.name} onClick={() => fetchHeroData(hero)}>{hero.name}</h6>
       });
     } else {
       return <div />
@@ -82,9 +84,7 @@ class PlayerDetailCard extends Component {
                 <div />
               )}
             </Card>
-            <Card bordered={ false } className='col-sm-6 text-center'>
-              <h1>Render Heroes Info Here</h1>
-            </Card>
+            <HeroDetail />
           </div>
         </Fragment>
       );
@@ -92,7 +92,6 @@ class PlayerDetailCard extends Component {
   }
 
   render() {
-    // console.log(this.props.playerData.data);
     return (
       <Fragment>
         {this.renderDetail()}
@@ -107,4 +106,4 @@ function mapStateToProps({ playerData }) {
   }
 }
 
-export default connect(mapStateToProps, null)(PlayerDetailCard);
+export default connect(mapStateToProps, { fetchHeroData })(PlayerDetailCard);
