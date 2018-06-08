@@ -61,14 +61,17 @@ class PlayerDetailCard extends Component {
               {data.competitiveStats ? (
                 <Fragment>
                   <div className='row text-center'>
-                    <Card className='col-sm-4' title='Win Rate' bordered={ false }>
+                    <Card className='col-sm-3' title='Win Rate' bordered={ false }>
                       <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                     </Card>
-                    <Card className='col-sm-4' title='Time Played' bordered={ false }>
+                    <Card className='col-sm-3' title='Time Played' bordered={ false }>
                       <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
                     </Card>
-                    <Card className='col-sm-4' title='Games Won' bordered={ false }>
-                      <h6 className='lead'>{data.gamesWon} Games</h6>
+                    <Card className='col-sm-3' title='Games Won' bordered={ false }>
+                      <h6 className='lead'>{data.gamesWon}</h6>
+                    </Card>
+                    <Card className='col-sm-3' title='K/D Ratio' bordered={ false }>
+                      <h6 className='lead'>{(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}</h6>
                     </Card>
                   </div>
                   <Card title='Most Played Heroes' bordered={ false } className='text-center'>
