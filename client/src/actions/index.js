@@ -17,7 +17,7 @@ const playerDataError = error => ({
 });
 
 export const fetchPlayerData = battletag => async dispatch => {
-  dispatch(requestPlayerData);
+  dispatch(requestPlayerData());
   const request = await axios.get('/api/playerData', {
     params: {
       battletag
@@ -25,7 +25,7 @@ export const fetchPlayerData = battletag => async dispatch => {
   });
   const { data } = request;
   if (data.error) {
-    dispatch(playerDataError(data.error))
+    dispatch(playerDataError(data.error));
   } else {
     dispatch(receivePlayerData(data));
   }
