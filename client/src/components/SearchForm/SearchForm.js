@@ -3,20 +3,16 @@ import { Button, message } from 'antd';
 import FormField from './FormField';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 
 class Form extends Component {
-  formSubmit = ({ title }) => {
-    const displayMsg = () => {
-      if (this.props.movieData.data.Error) {
-        message.error('Movie info not found!', 2);
-      } else {
-        message.success('Movie info successfully fetched!', 2);
-      }
-    }
-    this.props.fetchMovieData(title, displayMsg);
+  formSubmit = ({ battletag }) => {
+    console.log(battletag);
+    this.props.history.push(`/player/${battletag}`);
   }
 
   render() {
+    console.log(this.props.history);
     const { handleSubmit } = this.props;
     const style = {
       form: {
@@ -27,7 +23,7 @@ class Form extends Component {
     return (
       <form onSubmit={handleSubmit(this.formSubmit)} style={style.form}>
         <Field
-          name="title"
+          name="battletag"
           component={FormField}
         />
         <Button type="default" shape="circle" icon="search" size='large' htmlType='submit' style={{ marginLeft: '10px' }} />
@@ -38,8 +34,8 @@ class Form extends Component {
 
 function validate(value) {
   const errors = {};
-  if (!value.title) {
-    errors.title = 'Battletag is required!'
+  if (!value.battletag) {
+    errors.battletag = 'Battletag is required!'
   }
   return errors;
 }
@@ -50,7 +46,8 @@ function mapStateToProps({ movieData }) {
   }
 }
 
-export default reduxForm({
+export default withRouter(
+  reduxForm({
   validate,
-  form: 'title'
-})(connect(mapStateToProps, null)(Form));
+  form: 'battletag'
+})(connect(mapStateToProps, null)(Form)));
