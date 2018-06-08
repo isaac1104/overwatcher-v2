@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class PlayerDetail extends Component {
-  async componentDidMount() {
-    const request = await axios.get('https://ow-api.com/v1/stats/pc/us/cats-11481/complete');
-    const { data } = request;
-    console.log(data);
+  // const request = await axios.get('https://ow-api.com/v1/stats/pc/us/cats-11481/complete');
+  componentDidMount() {
+    console.log(this.props.match.params.id);
   }
-  
+
   render() {
     return (
       <div>
