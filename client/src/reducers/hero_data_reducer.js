@@ -1,4 +1,4 @@
-import { FETCH_HERO_DATA } from '../actions/types';
+import { FETCH_HERO_DATA, RESET_HERO_DATA } from '../actions/types';
 
 const INITIAL_STATE = {
   data: {}
@@ -7,6 +7,11 @@ const INITIAL_STATE = {
 function heroDataReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_HERO_DATA:
+      return {
+        ...state,
+        data: action.payload
+      };
+    case RESET_HERO_DATA:
       return {
         ...state,
         data: action.payload

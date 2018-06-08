@@ -1,4 +1,4 @@
-import { REQUEST_PLAYER_DATA, RECEIVE_PLAYER_DATA, PLAYER_DATA_ERROR, FETCH_HERO_DATA } from './types';
+import { REQUEST_PLAYER_DATA, RECEIVE_PLAYER_DATA, PLAYER_DATA_ERROR, FETCH_HERO_DATA, RESET_HERO_DATA } from './types';
 import axios from 'axios';
 
 const requestPlayerData = () => ({
@@ -30,6 +30,11 @@ export const fetchPlayerData = battletag => async dispatch => {
     dispatch(receivePlayerData(data));
   }
 }
+
+export const resetHeroData = () => ({
+  type: RESET_HERO_DATA,
+  payload: {}
+});
 
 export const fetchHeroData = hero => ({
   type: FETCH_HERO_DATA,
