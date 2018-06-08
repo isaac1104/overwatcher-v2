@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Divider } from 'antd';
+import { Card } from 'antd';
 import { connect } from 'react-redux';
 
 class PlayerDetailCard extends Component {
@@ -10,13 +10,14 @@ class PlayerDetailCard extends Component {
       return <h1 className='display-4 text-danger text-center'>{data}</h1>
     } else {
       return (
-        <div>
+        <Fragment>
           <div className='d-flex align-items-center' style={{ backgroundColor: '#eee' }}>
             <img src={data.icon} className='img-fluid' alt='icon' />
             <h1 className='display-4 ml-3 mt-2'>{data.name}</h1>
           </div>
-          <Card style={{ backgroundColor: '#8a8a8a' }} className='col-sm-6'>
-            <div className='row'>
+          <div className='row'>
+          <Card bordered={ false } className='col-sm-6'>
+            <div className='d-flex align-items-center row'>
               <div className='col-sm-4'>
                 <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '150px' }} />
               </div>
@@ -25,7 +26,6 @@ class PlayerDetailCard extends Component {
                 <h3 className='lead'>{data.rating} Points</h3>
               </div>
             </div>
-            <Divider />
             {data.competitiveStats ? (
               <div className='row text-center'>
                 <Card className='col-sm-4' title='Win Rate' bordered={ false }>
@@ -42,7 +42,11 @@ class PlayerDetailCard extends Component {
               <div />
             )}
           </Card>
+          <Card bordered={ false } className='col-sm-6'>
+            <p>Content</p>
+          </Card>
         </div>
+        </Fragment>
       );
     }
   }
