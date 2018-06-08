@@ -7,14 +7,13 @@ class PlayerDetailCard extends Component {
   renderTop3Heroes() {
     const { data } = this.props.playerData;
     if (data.competitiveStats) {
-      const allHeroes = _.sortBy(_.map(data.competitiveStats.topHeroes, (value, key) => {
-        return { 'name': key, 'win': value.gamesWon};
-      }), [hero => {
-        return hero.win;
-      }]);
-      const top3Heroes = allHeroes.splice(allHeroes.length -3, allHeroes.length).reverse();
+      const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
+        return { name: key, value }
+      }).filter(hero => hero.name !== 'allHeroes').sort((a,b) => {
+        return b.value.game.gamesWon - a.value.game.gamesWon;
+      }).splice(0, 3);
       return top3Heroes.map(hero => {
-        return <h6 className='lead' key={hero.name} onClick={() => console.log(hero.name)}>{hero.name}</h6>
+        return <h6 className='lead' key={hero.name} onClick={() => console.log(hero.name, hero.value)}>{hero.name}</h6>
       });
     } else {
       return <div />
@@ -28,7 +27,7 @@ class PlayerDetailCard extends Component {
         return { name: key, value }
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
-        return <h6 key={hero.name}>{hero.name}</h6>
+        return <h6 key={hero.name} onClick={() => console.log(hero.name, hero.value)}>{hero.name}</h6>
       });
     } else {
       return <div />
@@ -75,7 +74,7 @@ class PlayerDetailCard extends Component {
                       {this.renderTop3Heroes()}
                     </div>
                   </Card>
-                  <Card title='All Heroes'>
+                  <Card title='All Heroes' bordered= { false } className='text-center'>
                     {this.renderAllHeroes()}
                   </Card>
                 </Fragment>
