@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchPlayerData } from '../../actions';
 
 class PlayerDetail extends Component {
-  // const request = await axios.get('https://ow-api.com/v1/stats/pc/us/cats-11481/complete');
+  componentDidMount() {
+    const { fetchPlayerData, match: { params: { id } } } = this.props;
+    fetchPlayerData(id);
+  }
+
   render() {
+    console.log(this.props.playerData);
     return (
       <div>
         <h1>{this.props.match.params.id}</h1>
@@ -12,4 +18,10 @@ class PlayerDetail extends Component {
   }
 }
 
-export default PlayerDetail;
+function mapStateToProps({ playerData }) {
+  return {
+    playerData
+  }
+}
+
+export default connect(mapStateToProps, { fetchPlayerData })(PlayerDetail);

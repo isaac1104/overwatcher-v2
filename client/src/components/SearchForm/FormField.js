@@ -13,9 +13,6 @@ const FormField = field => {
         autoComplete="off"
         placeholder={touched ? error : ""}
       />
-      {/* <div className="invalid-feedback">
-        {touched ? error : ""}
-      </div> */}
     </div>
   );
 }

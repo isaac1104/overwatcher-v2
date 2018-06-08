@@ -3,16 +3,15 @@ import { Button, message } from 'antd';
 import FormField from './FormField';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
   formSubmit = ({ battletag }) => {
-    console.log(battletag);
-    this.props.history.push(`/player/${battletag}`);
+    const { history } = this.props;
+    history.push(`/player/${battletag}`);
   }
 
   render() {
-    console.log(this.props.history);
     const { handleSubmit } = this.props;
     const style = {
       form: {
@@ -40,14 +39,8 @@ function validate(value) {
   return errors;
 }
 
-function mapStateToProps({ movieData }) {
-  return {
-    movieData
-  }
-}
-
 export default withRouter(
   reduxForm({
   validate,
   form: 'battletag'
-})(connect(mapStateToProps, null)(Form)));
+})(Form));

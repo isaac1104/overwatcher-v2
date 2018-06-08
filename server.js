@@ -7,6 +7,8 @@ app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });
 
+require('./routes/api_player_data')(app);
+
 if (['production', 'ci'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
