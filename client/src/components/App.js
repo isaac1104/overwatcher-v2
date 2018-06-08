@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ContentLayout from './Layout/ContentLayout';
@@ -14,8 +14,8 @@ class App extends Component {
             <Navbar/>
             <ContentLayout>
               <Switch>
-                <Route exact="exact" path='/' component={Home}/>
-                <Route exact="exact" path='/player/:id' component={PlayerDetail}/>
+                <Route exact path='/' component={Home}/>
+                <Route exact path='/player/:id' component={PlayerDetail}/>
               </Switch>
             </ContentLayout>
           </Layout>
