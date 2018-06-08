@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import PlayerDetailCard from './PlayerDetailCard';
+import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import { fetchPlayerData } from '../../actions';
 
@@ -15,13 +17,25 @@ class PlayerDetail extends Component {
     }
   }
 
+  renderPlayerDetail() {
+    const { isFetching } = this.props.playerData;
+    if (isFetching) {
+      return (
+        <div className='d-flex justify-content-center align-item-center'>
+          <Spin tip='Fetching Data...' size='large' />
+        </div>
+      );
+    } else {
+      return <PlayerDetailCard />
+    }
+  }
+
   render() {
-    console.log(this.props.playerData);
-    const { error, data } = this.props.playerData;
+    const { isFetching } = this.props.playerData;
     return (
-      <div>
-        <h1>{error ? data : data.name}</h1>
-      </div>
+      <Fragment>
+        {this.renderPlayerDetail()}
+      </Fragment>
     );
   }
 }
