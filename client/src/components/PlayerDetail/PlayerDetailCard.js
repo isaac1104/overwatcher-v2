@@ -35,7 +35,7 @@ class PlayerDetailCard extends Component {
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
         return (
-          <div className='col-sm-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
+          <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
             <Avatar icon='user' size='large' />
             <p className='lead text-capitalize'>{hero.name}</p>
           </div>
@@ -53,34 +53,32 @@ class PlayerDetailCard extends Component {
     } else {
       return (
         <Fragment>
-          <div className='d-flex align-items-center' style={{ backgroundColor: '#eee' }}>
-            <img src={data.icon} className='img-fluid' alt='icon' />
-            <h1 className='display-4 ml-3 mt-2'>{data.name}</h1>
+          <div className='row'>
+            <div className='col-md-1'>
+              <img src={data.icon} className='img-fluid' alt='icon' />
+            </div>
+            <div className='col-md-11'>
+              <h1 className='display-4 ml-3'>{data.name}</h1>
+              <h3 className='lead ml-3'>
+                <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} /> {data.ratingName} | {data.rating} Points
+              </h3>
+            </div>
           </div>
           <div className='row'>
-            <Card bordered={ false } className='col-sm-6'>
-              <div className='d-flex align-items-center row'>
-                <div className='col-sm-4'>
-                  <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '150px' }} />
-                </div>
-                <div className='col-sm-8' style={{ marginTop: '20px' }}>
-                  <h3>{data.ratingName}</h3>
-                  <h3 className='lead'>{data.rating} Points</h3>
-                </div>
-              </div>
+            <Card bordered={ false } className='col-md-6'>
               {data.competitiveStats ? (
                 <Fragment>
                   <div className='row text-center'>
-                    <Card className='col-sm-3' title='Win Rate' bordered={ false }>
+                    <Card className='col-md-3' title='Win Rate' bordered={ false }>
                       <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                     </Card>
-                    <Card className='col-sm-3' title='Time Played' bordered={ false }>
+                    <Card className='col-md-3' title='Time Played' bordered={ false }>
                       <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
                     </Card>
-                    <Card className='col-sm-3' title='Games Won' bordered={ false }>
+                    <Card className='col-md-3' title='Games Won' bordered={ false }>
                       <h6 className='lead'>{data.gamesWon}</h6>
                     </Card>
-                    <Card className='col-sm-3' title='K/D Ratio' bordered={ false }>
+                    <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
                       <h6 className='lead'>{(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}</h6>
                     </Card>
                   </div>
@@ -99,7 +97,7 @@ class PlayerDetailCard extends Component {
                 <div />
               )}
             </Card>
-            <Card bordered={ false } className='col-sm-6 text-center'>
+            <Card bordered={ false } className='col-md-6 text-center'>
               <HeroDetail />
             </Card>
           </div>
