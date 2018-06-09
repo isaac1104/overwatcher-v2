@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { resetHeroData } from '../../actions';
-import { Card } from 'antd';
+import { Avatar, Card } from 'antd';
 
 class HeroDetail extends Component {
   componentDidMount() {
     this.props.resetHeroData();
   }
 
+  renderHeroStats() {
+    const { data, data: { value } } = this.props.heroData;
+    if (value) {
+      return (
+        <Fragment>
+          <h3 className='text-capitalize'><Avatar icon='user' size='large' /> {data.name}</h3>
+          <h6>K/D: {value.average.eliminationsPerLife}</h6>
+        </Fragment>
+      );
+    }
+  }
+
   render() {
-    const { data } = this.props.heroData;
     console.log(this.props.heroData.data);
     return (
-      <Card bordered={ false } className='col-sm-6 text-center'>
-        <h1>{data.name}</h1>
-      </Card>
+      <div>
+        {this.renderHeroStats()}
+      </div>
     );
   }
 }

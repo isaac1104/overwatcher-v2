@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
-import { Card } from 'antd';
+import { Avatar, Card } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
@@ -15,7 +15,12 @@ class PlayerDetailCard extends Component {
         return b.value.game.gamesWon - a.value.game.gamesWon;
       }).splice(0, 3);
       return top3Heroes.map(hero => {
-        return <h6 className='lead' key={hero.name} onClick={() => fetchHeroData(hero)}>{hero.name}</h6>
+        return (
+          <div onClick={() => fetchHeroData(hero)} key={hero.name}>
+            <Avatar icon='user' size='large' />
+            <h6 className='lead text-capitalize'>{hero.name}</h6>
+          </div>
+        );
       });
     } else {
       return <div />
@@ -29,7 +34,12 @@ class PlayerDetailCard extends Component {
         return { name: key, value }
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
-        return <h6 key={hero.name} onClick={() => fetchHeroData(hero)}>{hero.name}</h6>
+        return (
+          <div className='col-sm-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
+            <Avatar icon='user' size='large' />
+            <p className='lead text-capitalize'>{hero.name}</p>
+          </div>
+        );
       });
     } else {
       return <div />
@@ -80,14 +90,18 @@ class PlayerDetailCard extends Component {
                     </div>
                   </Card>
                   <Card title='All Heroes' bordered= { false } className='text-center'>
-                    {this.renderAllHeroes()}
+                    <div className='row'>
+                      {this.renderAllHeroes()}
+                    </div>
                   </Card>
                 </Fragment>
               ) : (
                 <div />
               )}
             </Card>
-            <HeroDetail />
+            <Card bordered={ false } className='col-sm-6 text-center'>
+              <HeroDetail />
+            </Card>
           </div>
         </Fragment>
       );
