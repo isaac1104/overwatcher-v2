@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
-import { Avatar, Card } from 'antd';
+import { Avatar, Card, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
@@ -60,7 +60,8 @@ class PlayerDetailCard extends Component {
             <div className='col-md-11'>
               <h1 className='display-4 ml-3'>{data.name}</h1>
               <h3 className='lead ml-3'>
-                <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} /> {data.ratingName} | {data.rating} Points
+                <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
+                {data.ratingName}<Divider type="vertical" /> {data.rating} Points 
               </h3>
             </div>
           </div>
@@ -72,14 +73,14 @@ class PlayerDetailCard extends Component {
                     <Card className='col-md-3' title='Win Rate' bordered={ false }>
                       <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                     </Card>
+                    <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
+                      <h6 className='lead'>{(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}</h6>
+                    </Card>
                     <Card className='col-md-3' title='Time Played' bordered={ false }>
                       <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
                     </Card>
                     <Card className='col-md-3' title='Games Won' bordered={ false }>
                       <h6 className='lead'>{data.gamesWon}</h6>
-                    </Card>
-                    <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
-                      <h6 className='lead'>{(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}</h6>
                     </Card>
                   </div>
                   <Card title='Most Played Heroes' bordered={ false } className='text-center'>
