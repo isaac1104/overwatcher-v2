@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { resetHeroData } from '../../actions';
-import { Avatar, Card } from 'antd';
+import { Avatar, Badge, Card } from 'antd';
 
 class HeroDetail extends Component {
   componentDidMount() {
@@ -18,9 +18,9 @@ class HeroDetail extends Component {
           <h6>Games Played: {value.game.gamesPlayed}</h6>
           <h6>Games Won: {value.game.gamesWon}</h6>
           <h6>Win % : {value.game.winPercentage}</h6>
-          <h6>Gold Medals: {value.matchAwards.medalsGold}</h6>
-          <h6>Silver Medals: {value.matchAwards.medalsSilver}</h6>
-          <h6>Bronze Medals: {value.matchAwards.medalsBronze}</h6>
+          <h6>Gold Medals: <Badge count={value.matchAwards.medalsGold} style={{ background: 'gold' }}/></h6>
+          <h6>Silver Medals: <Badge count={value.matchAwards.medalsSilver} style={{ background: 'silver' }}/></h6>
+          <h6>Bronze Medals: <Badge count={value.matchAwards.medalsBronze} style={{ background: '#CD7F32' }}/></h6>
           <h6>Weapon Accuracy: {value.combat.weaponAccuracy || 'N/A'}</h6>
           <h6>Damage Done: {value.combat.damageDone}</h6>
         </Fragment>

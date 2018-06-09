@@ -6,6 +6,13 @@ import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
 class PlayerDetailCard extends Component {
+  // componentDidMount() {
+  //   const portraits = require.context("../../images/heroes", false, /.*\.png$/);
+  //   portraits.keys().forEach(function(key){
+  //       console.log(portraits(key));
+  //   });
+  // }
+
   renderTop3Heroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
     if (data.competitiveStats) {
@@ -17,7 +24,7 @@ class PlayerDetailCard extends Component {
       return top3Heroes.map(hero => {
         return (
           <div onClick={() => fetchHeroData(hero)} key={hero.name}>
-            <Avatar icon='user' size='large' />
+            <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
             <h6 className='lead text-capitalize'>{hero.name}</h6>
           </div>
         );
@@ -25,6 +32,10 @@ class PlayerDetailCard extends Component {
     } else {
       return <div />
     }
+  }
+
+  renderPortraits() {
+
   }
 
   renderAllHeroes() {
@@ -36,7 +47,7 @@ class PlayerDetailCard extends Component {
       return allHeroes.map(hero => {
         return (
           <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
-            <Avatar icon='user' size='large' />
+            <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
             <p className='lead text-capitalize'>{hero.name}</p>
           </div>
         );
@@ -61,7 +72,7 @@ class PlayerDetailCard extends Component {
               <h1 className='display-4 ml-3'>{data.name}</h1>
               <h3 className='lead ml-3'>
                 <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
-                {data.ratingName}<Divider type="vertical" /> {data.rating} Points 
+                {data.ratingName}<Divider type="vertical" /> {data.rating} Points
               </h3>
             </div>
           </div>
