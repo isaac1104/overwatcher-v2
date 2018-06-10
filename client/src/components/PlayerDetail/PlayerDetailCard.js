@@ -35,7 +35,7 @@ class PlayerDetailCard extends Component {
             <h1 className='display-4' style={{ color: '#fff' }}>{data.name}</h1>
             <h3 className='lead' style={{ color: '#fff' }}>
               <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
-              {data.ratingName}<Divider type="vertical" /> {data.rating} Points
+              {data.ratingName}<Divider type='vertical' /> {data.rating} Points
             </h3>
           </div>
         </div>
