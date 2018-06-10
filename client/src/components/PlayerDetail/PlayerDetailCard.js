@@ -39,6 +39,8 @@ class PlayerDetailCard extends Component {
           </div>
         </div>
       );
+    } else {
+      return <div />
     }
   }
 
@@ -99,7 +101,9 @@ class PlayerDetailCard extends Component {
                       <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                     </Card>
                     <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
-                      <h6 className='lead'>{(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}</h6>
+                      <h6 className='lead'>
+                        {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
+                      </h6>
                     </Card>
                     <Card className='col-md-3' title='Time Played' bordered={ false }>
                       <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
