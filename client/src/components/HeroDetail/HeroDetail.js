@@ -116,7 +116,6 @@ class HeroDetail extends Component {
                 <div className='col-md-8' style={{ marginTop: '2.4rem' }}>
                   <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
                     <h6 className='lead'>{value.game.gamesWon || '-'} Wins</h6>
-                    <h6 className='lead'>{value.game.timePlayed}</h6>
                     <h6>
                       Medals
                       <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
