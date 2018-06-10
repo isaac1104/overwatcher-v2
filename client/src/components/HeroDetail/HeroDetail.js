@@ -10,68 +10,78 @@ class HeroDetail extends Component {
   }
 
   renderStatsTable() {
-    const { data, data: { value } } = this.props.heroData;
+    const { data: { value } } = this.props.heroData;
     if (value) {
       const columns1 = [{
         title: 'K/D',
         dataIndex: 'kd',
-        key: 'kd'
+        key: 'kd',
+        width: '20%'
       }, {
         title: 'Games Played',
         dataIndex: 'gamesPlayed',
-        key: 'gamesPlayed'
+        key: 'gamesPlayed',
+        width: '20%'
       }, {
         title: 'Win %',
         dataIndex: 'winPercentage',
-        key: 'winPercentage'
+        key: 'winPercentage',
+        width: '20%'
       }, {
         title: 'Weapon Accuracy',
         dataIndex: 'weaponAccuracy',
-        key: 'weaponAccuracy'
+        key: 'weaponAccuracy',
+        width: '20%'
       }, {
         title: 'Damage Done',
         dataIndex: 'damageDone',
-        key: 'damageDone'
+        key: 'damageDone',
+        width: '20%'
       }];
 
       const columns2 = [{
         title: 'Avg. Damage',
         dataIndex: 'avgDamage',
-        key: 'avgDamage'
+        key: 'avgDamage',
+        width: '20%'
       }, {
         title: 'Hero Damage',
         dataIndex: 'heroDamage',
-        key: 'heroDamage'
+        key: 'heroDamage',
+        width: '20%'
       }, {
         title: 'Obj. Time',
         dataIndex: 'objTime',
-        key: 'objTime'
+        key: 'objTime',
+        width: '20%'
       }, {
         title: 'Time On Fire',
         dataIndex: 'timeOnFire',
-        key: 'timeOnFire'
+        key: 'timeOnFire',
+        width: '20%'
       }, {
         title: 'Multikills',
         dataIndex: 'multikills',
-        key: 'multikills'
+        key: 'multikills',
+        width: '20%'
       }];
 
       const data1 = [{
         key: '1',
-        kd: value.average.eliminationsPerLife || 'N/A',
-        gamesPlayed: value.game.gamesPlayed || 'N/A',
-        winPercentage: value.game.winPercentage || 'N/A',
-        weaponAccuracy: value.combat.weaponAccuracy || 'N/A',
-        damageDone: value.combat.damageDone || 'N/A'
-      }];
+        kd: <p className='lead'>{value.average.eliminationsPerLife || 'N/A'}</p>,
+          gamesPlayed: <p className='lead'>{value.game.gamesPlayed || 'N/A'}</p>,
+          winPercentage: <p className='lead'>{value.game.winPercentage || 'N/A'}</p>,
+          weaponAccuracy: <p className='lead'>{value.combat.weaponAccuracy || 'N/A'}</p>,
+          damageDone: <p className='lead'>{value.combat.damageDone || 'N/A'}</p>
+        }];
 
-      const data2 = [{
-        key: '2',
-        avgDamage: value.average.allDamageDone || 'NA',
-        heroDamage: value.combat.heroDamageDone || 'NA',
-        objTime: value.combat.objectiveTime || 'NA',
-        timeOnFire: value.combat.timeSpentOnFire || 'NA',
-        multikills: value.combat.multikills || 'N/A'
+        const data2 = [{
+          key: '2',
+          avgDamage: <p className='lead'>{value.average.allDamageDone || 'NA'}</p>,
+          heroDamage: <p className='lead'>{value.combat.heroDamageDone || 'NA'}</p>,
+          objTime: <p className='lead'>{value.combat.objectiveTime || 'NA'}</p>,
+          timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'NA'}</p>,
+          multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
       }];
 
       return (
@@ -85,10 +95,6 @@ class HeroDetail extends Component {
 
   renderHeroStats() {
     const { data, data: { value } } = this.props.heroData;
-    const gridStyle = {
-      width: '20%',
-      textAlign: 'center',
-    };
     if (value) {
       return (
         <Fragment>
