@@ -2,17 +2,91 @@ import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { resetHeroData } from '../../actions';
-import { Avatar, Badge, Card, Divider } from 'antd';
+import { Avatar, Badge, Card, Divider, Table } from 'antd';
 
 class HeroDetail extends Component {
   componentDidMount() {
     this.props.resetHeroData();
   }
 
+  renderStatsTable() {
+    const { data, data: { value } } = this.props.heroData;
+    if (value) {
+      const columns1 = [{
+        title: 'K/D',
+        dataIndex: 'kd',
+        key: 'kd'
+      }, {
+        title: 'Games Played',
+        dataIndex: 'gamesPlayed',
+        key: 'gamesPlayed'
+      }, {
+        title: 'Win %',
+        dataIndex: 'winPercentage',
+        key: 'winPercentage'
+      }, {
+        title: 'Weapon Accuracy',
+        dataIndex: 'weaponAccuracy',
+        key: 'weaponAccuracy'
+      }, {
+        title: 'Damage Done',
+        dataIndex: 'damageDone',
+        key: 'damageDone'
+      }];
+
+      const columns2 = [{
+        title: 'Avg. Damage',
+        dataIndex: 'avgDamage',
+        key: 'avgDamage'
+      }, {
+        title: 'Hero Damage',
+        dataIndex: 'heroDamage',
+        key: 'heroDamage'
+      }, {
+        title: 'Obj. Time',
+        dataIndex: 'objTime',
+        key: 'objTime'
+      }, {
+        title: 'Time On Fire',
+        dataIndex: 'timeOnFire',
+        key: 'timeOnFire'
+      }, {
+        title: 'Multikills',
+        dataIndex: 'multikills',
+        key: 'multikills'
+      }];
+
+      const data1 = [{
+        key: '1',
+        kd: value.average.eliminationsPerLife || 'N/A',
+        gamesPlayed: value.game.gamesPlayed || 'N/A',
+        winPercentage: value.game.winPercentage || 'N/A',
+        weaponAccuracy: value.combat.weaponAccuracy || 'N/A',
+        damageDone: value.combat.damageDone || 'N/A'
+      }];
+
+      const data2 = [{
+        key: '2',
+        avgDamage: value.average.allDamageDone || 'NA',
+        heroDamage: value.combat.heroDamageDone || 'NA',
+        objTime: value.combat.objectiveTime || 'NA',
+        timeOnFire: value.combat.timeSpentOnFire || 'NA',
+        multikills: value.combat.multikills || 'N/A'
+      }];
+
+      return (
+        <Fragment>
+          <Table columns={columns1} dataSource={data1} pagination={false} />
+          <Table columns={columns2} dataSource={data2} pagination={false} />
+        </Fragment>
+      );
+    }
+  }
+
   renderHeroStats() {
     const { data, data: { value } } = this.props.heroData;
     const gridStyle = {
-      width: '25%',
+      width: '20%',
       textAlign: 'center',
     };
     if (value) {
@@ -55,16 +129,7 @@ class HeroDetail extends Component {
               </div>
             }
           >
-            <Card.Grid style={gridStyle}>K/D: {value.average.eliminationsPerLife || 'N/A'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Games Played: {value.game.gamesPlayed || 'N/A'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Win % : {value.game.winPercentage || 'N/A'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Weapon Accuracy: {value.combat.weaponAccuracy || 'N/A'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Damage Done: {value.combat.damageDone || 'N/A'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Avg. Damage: {value.average.allDamageDone || 'NA'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Hero Damage: {value.combat.heroDamageDone || 'NA'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Obj. Time: {value.combat.objectiveTime || 'NA'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Time on Fire: {value.combat.timeSpentOnFire || 'NA'}</Card.Grid>
-            <Card.Grid style={gridStyle}>Multi Kills: {value.combat.multikills || 'NA'}</Card.Grid>
+            {this.renderStatsTable()}
           </Card>
         </Fragment>
       );
