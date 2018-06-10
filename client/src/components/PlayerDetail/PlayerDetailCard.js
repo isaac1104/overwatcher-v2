@@ -6,14 +6,43 @@ import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
 class PlayerDetailCard extends Component {
-  // componentDidMount() {
-  //   const portraits = require.context("../../images/heroes", false, /.*\.png$/);
-  //   portraits.keys().forEach(function(key){
-  //       console.log(portraits(key));
-  //   });
-  // }
+  renderMainHero() {
+    const { data } = this.props.playerData;
+    if (data.competitiveStats) {
+      const mainHero = _.map(data.competitiveStats.topHeroes, (value, key) => {
+        return { name: key, gamesWon: value.gamesWon }
+      }).reduce((acc,curr) => {
+        if (acc.gamesWon > curr.gamesWon) {
+          return acc;
+        } else {
+          return curr;
+        }
+      }).name;
+      return (
+        <div
+          className='row'
+          style={{
+            backgroundImage: 'url(`/images/heroes-bg/${mainHero}.png`)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed'
+          }}>
+          <div className='col-md-1'>
+            <img src={data.icon} className='img-fluid' alt='icon' />
+          </div>
+          <div className='col-md-11'>
+            <h1 className='display-4 ml-3'>{data.name}</h1>
+            <h3 className='lead ml-3'>
+              <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
+              {data.ratingName}<Divider type="vertical" /> {data.rating} Points
+            </h3>
+          </div>
+        </div>
+      );
+    }
+  }
 
-  renderTop3Heroes() {
+  renderMostPlayedHeroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
     if (data.competitiveStats) {
       const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
@@ -32,10 +61,6 @@ class PlayerDetailCard extends Component {
     } else {
       return <div />
     }
-  }
-
-  renderPortraits() {
-
   }
 
   renderAllHeroes() {
@@ -64,18 +89,7 @@ class PlayerDetailCard extends Component {
     } else {
       return (
         <Fragment>
-          <div className='row'>
-            <div className='col-md-1'>
-              <img src={data.icon} className='img-fluid' alt='icon' />
-            </div>
-            <div className='col-md-11'>
-              <h1 className='display-4 ml-3'>{data.name}</h1>
-              <h3 className='lead ml-3'>
-                <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
-                {data.ratingName}<Divider type="vertical" /> {data.rating} Points
-              </h3>
-            </div>
-          </div>
+          {this.renderMainHero()}
           <div className='row'>
             <Card bordered={ false } className='col-md-6'>
               {data.competitiveStats ? (
@@ -96,7 +110,7 @@ class PlayerDetailCard extends Component {
                   </div>
                   <Card title='Most Played Heroes' bordered={ false } className='text-center'>
                     <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
-                      {this.renderTop3Heroes()}
+                      {this.renderMostPlayedHeroes()}
                     </div>
                   </Card>
                   <Card title='All Heroes' bordered= { false } className='text-center'>
