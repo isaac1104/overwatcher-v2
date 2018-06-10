@@ -25,6 +25,7 @@ class PlayerDetailCard extends Component {
             backgroundImage: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
+            backgroundPosition: 'center center',
             backgroundAttachment: 'fixed'
           }}>
           <div className='col-md-1 mt-3'>
