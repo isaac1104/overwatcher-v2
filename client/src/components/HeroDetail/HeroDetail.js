@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { resetHeroData } from '../../actions';
 import { Avatar, Badge, Card } from 'antd';
@@ -51,10 +52,18 @@ class HeroDetail extends Component {
   }
 
   render() {
-    console.log(this.props.heroData.data);
+    const { data } = this.props.heroData;
+    console.log(data);
     return (
       <div>
-        {this.renderHeroStats()}
+        {_.isEmpty(data)
+          ? (
+            <h1 className='display-4 lead'>Click on a hero to display stats</h1>
+          )
+          : (
+            this.renderHeroStats()
+          )
+        }
       </div>
     );
   }

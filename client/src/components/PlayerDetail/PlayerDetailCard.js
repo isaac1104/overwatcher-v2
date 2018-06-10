@@ -128,7 +128,7 @@ class PlayerDetailCard extends Component {
                 <div />
               )}
             </Card>
-            <Card bordered={ false } className='col-md-6 text-center'>
+            <Card bordered={ false } className='col-md-6 text-center' style={{ backgroundColor: '#f0f2f5' }}>
               <HeroDetail />
             </Card>
           </div>
