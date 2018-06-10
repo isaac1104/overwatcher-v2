@@ -22,17 +22,17 @@ class PlayerDetailCard extends Component {
         <div
           className='row'
           style={{
-            backgroundImage: `url(/images/heroes-bg/${mainHero}.png)`,
+            backgroundImage: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundAttachment: 'fixed'
           }}>
-          <div className='col-md-1'>
+          <div className='col-md-1 mt-3'>
             <img src={data.icon} className='img-fluid' alt='icon' />
           </div>
           <div className='col-md-11'>
-            <h1 className='display-4 ml-3'>{data.name}</h1>
-            <h3 className='lead ml-3'>
+            <h1 className='display-4' style={{ color: '#fff' }}>{data.name}</h1>
+            <h3 className='lead' style={{ color: '#fff' }}>
               <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
               {data.ratingName}<Divider type="vertical" /> {data.rating} Points
             </h3>
