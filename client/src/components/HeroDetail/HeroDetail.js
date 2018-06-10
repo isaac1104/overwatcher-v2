@@ -103,9 +103,17 @@ class HeroDetail extends Component {
             title={
               <div className='row'>
                 <div className='col-md-4'>
-                  <h3 className='text-capitalize'><Avatar icon='user' size='large' src={`/images/heroes/${data.name}.png`}/> {data.name}</h3>
+                  <h3 className='text-capitalize'>
+                    <Avatar
+                      style={{ width: '100px', height: '100px', borderRadius: '50%', marginRight: '10px' }}
+                      icon='user'
+                      size='large'
+                      src={`/images/heroes/${data.name}.png`}
+                    />
+                    {data.name}
+                  </h3>
                 </div>
-                <div className='col-md-8'>
+                <div className='col-md-8' style={{ marginTop: '2.4rem' }}>
                   <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
                     <h6 className='lead'>{value.game.gamesWon || '-'} Wins</h6>
                     <h6 className='lead'>{value.game.timePlayed}</h6>
