@@ -19,13 +19,29 @@ class HeroDetail extends Component {
           <h6>Games Won: {value.game.gamesWon || 'N/A'}</h6>
           <h6>Win % : {value.game.winPercentage || 'N/A'}</h6>
           <h6>
-            Gold Medals: <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0} style={{ background: 'gold' }} showZero/>
+            Gold Medals:
+            <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
+              style={{ background: 'gold' }}
+              showZero
+              overflowCount={999}
+            />
           </h6>
           <h6>
-            Silver Medals: <Badge count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0} style={{ background: 'silver' }} showZero/>
+            Silver Medals:
+            <Badge
+              count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
+              style={{ background: 'silver' }}
+              showZero
+              overflowCount={999}
+            />
           </h6>
           <h6>
-            Bronze Medals: <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0} style={{ background: '#CD7F32' }} showZero/>
+            Bronze Medals:
+            <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
+              style={{ background: '#CD7F32' }}
+              showZero
+              overflowCount={999}
+            />
           </h6>
           <h6>Weapon Accuracy: {value.combat.weaponAccuracy || 'N/A'}</h6>
           <h6>Damage Done: {value.combat.damageDone || 'N/A'}</h6>

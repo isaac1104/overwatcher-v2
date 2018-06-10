@@ -22,7 +22,7 @@ class PlayerDetailCard extends Component {
         <div
           className='row'
           style={{
-            backgroundImage: 'url(`/images/heroes-bg/${mainHero}.png`)',
+            backgroundImage: `url(/images/heroes-bg/${mainHero}.png)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundAttachment: 'fixed'
