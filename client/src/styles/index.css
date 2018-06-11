@@ -26,6 +26,10 @@ body {
   color: #fff !important;
 }
 
+.ant-table-row {
+  background-color: #fff !important;
+}
+
 .detail-text {
   color: #fff !important
 }

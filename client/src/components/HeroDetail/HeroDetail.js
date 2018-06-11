@@ -99,6 +99,7 @@ class HeroDetail extends Component {
       return (
         <Fragment>
           <Card
+            style={{ backgroundColor: '#f0f2f5' }}
             bordered={ false }
             title={
               <div className='row'>
