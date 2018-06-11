@@ -6,8 +6,9 @@ import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
   formSubmit = ({ battletag }) => {
-    const { history } = this.props;
+    const { history, reset } = this.props;
     history.push(`/player/stats/${battletag}`);
+    reset();
   }
 
   render() {
