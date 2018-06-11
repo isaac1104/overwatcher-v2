@@ -1,0 +1,31 @@
+@import '~antd/dist/antd.css';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container-fluid {
+  width: 90% !important;
+}
+
+.ant-card-head {
+  background: transparent !important;
+}
+
+.ant-card .text-center {
+  background: transparent !important;
+}
+
+.ant-card .col-md-3 {
+  background: transparent !important;
+}
+
+.ant-card-head-title {
+  color: #fff !important;
+}
+
+.detail-text {
+  color: #fff !important
+}

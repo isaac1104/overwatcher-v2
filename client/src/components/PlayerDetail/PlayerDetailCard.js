@@ -57,7 +57,7 @@ class PlayerDetailCard extends Component {
         return (
           <div onClick={() => fetchHeroData(hero)} key={hero.name}>
             <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
-            <h6 className='lead text-capitalize'>{hero.name}</h6>
+            <h6 className='lead text-capitalize detail-text'>{hero.name}</h6>
           </div>
         );
       });
@@ -76,7 +76,7 @@ class PlayerDetailCard extends Component {
         return (
           <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
             <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
-            <p className='lead text-capitalize'>{hero.name}</p>
+            <p className='lead text-capitalize detail-text'>{hero.name}</p>
           </div>
         );
       });
@@ -94,23 +94,23 @@ class PlayerDetailCard extends Component {
         <Fragment>
           {this.renderMainHero()}
           <div className='row'>
-            <Card bordered={ false } className='col-md-6'>
+            <Card bordered={ false } className='col-md-6' style={{ backgroundColor: '#343a40' }}>
               {data.competitiveStats ? (
                 <Fragment>
                   <div className='row text-center'>
                     <Card className='col-md-3' title='Games Won' bordered={ false }>
-                      <h6 className='lead'>{data.gamesWon}</h6>
+                      <h6 className='lead detail-text'>{data.gamesWon}</h6>
                     </Card>
                     <Card className='col-md-3' title='Win Rate' bordered={ false }>
-                      <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
+                      <h6 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                     </Card>
                     <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
-                      <h6 className='lead'>
+                      <h6 className='lead detail-text'>
                         {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
                       </h6>
                     </Card>
                     <Card className='col-md-3' title='Time Played' bordered={ false }>
-                      <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
+                      <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
                     </Card>
                   </div>
                   <Card title='Most Played Heroes' bordered={ false } className='text-center'>
