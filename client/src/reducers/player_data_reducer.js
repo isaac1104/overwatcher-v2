@@ -28,12 +28,7 @@ function playerDataReducer(state = INITIAL_STATE, action) {
         data: action.payload
       };
     case RESET_PLAYER_DATA:
-      return {
-        ...state,
-        isFetching: false,
-        error: false,
-        data: {}
-      };
+      return INITIAL_STATE;
     default:
       return state;
   }
