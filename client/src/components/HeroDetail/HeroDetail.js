@@ -210,7 +210,6 @@ class HeroDetail extends Component {
 
   render() {
     const { data } = this.props.heroData;
-    console.log(data);
     return (
       <div>
         {_.isEmpty(data) ? (

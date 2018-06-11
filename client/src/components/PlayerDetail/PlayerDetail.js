@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PlayerDetailCard from './PlayerDetailCard';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
-import { fetchPlayerData } from '../../actions';
+import { fetchPlayerData, resetPlayerData } from '../../actions';
 
 class PlayerDetail extends Component {
   componentDidMount() {
@@ -15,6 +15,10 @@ class PlayerDetail extends Component {
     if (prevProps.match.params.id !== id) {
       fetchPlayerData(id);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.resetPlayerData();
   }
 
   renderPlayerDetail() {
@@ -57,4 +61,4 @@ function mapStateToProps({ playerData }) {
   }
 }
 
-export default connect(mapStateToProps, { fetchPlayerData })(PlayerDetail);
+export default connect(mapStateToProps, { fetchPlayerData, resetPlayerData })(PlayerDetail);

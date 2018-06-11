@@ -1,4 +1,4 @@
-import { REQUEST_PLAYER_DATA, RECEIVE_PLAYER_DATA, PLAYER_DATA_ERROR } from '../actions/types';
+import { REQUEST_PLAYER_DATA, RECEIVE_PLAYER_DATA, PLAYER_DATA_ERROR, RESET_PLAYER_DATA } from '../actions/types';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -11,7 +11,7 @@ function playerDataReducer(state = INITIAL_STATE, action) {
     case REQUEST_PLAYER_DATA:
       return {
         ...state,
-        isFetching: action.payload
+        isFetching: action.payload,
       };
     case RECEIVE_PLAYER_DATA:
       return {
@@ -26,6 +26,13 @@ function playerDataReducer(state = INITIAL_STATE, action) {
         isFetching: false,
         error: true,
         data: action.payload
+      };
+    case RESET_PLAYER_DATA:
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+        data: {}
       };
     default:
       return state;
