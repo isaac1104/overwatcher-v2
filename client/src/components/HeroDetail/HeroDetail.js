@@ -213,11 +213,9 @@ class HeroDetail extends Component {
     console.log(data);
     return (
       <div>
-        {_.isEmpty(data)
-          ? (
-            <h1 className='display-4 lead'>Click on a hero to display stats</h1>
-          )
-          : (
+        {_.isEmpty(data) ? (
+            <h1 className='display-4 lead'>Click a hero portrait to display hero data</h1>
+          ) : (
             this.renderHeroStats()
           )
         }
