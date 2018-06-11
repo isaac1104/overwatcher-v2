@@ -4,6 +4,7 @@ import HeroDetail from '../HeroDetail/HeroDetail';
 import { Avatar, Card, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
+import { Redirect } from 'react-router-dom';
 
 class PlayerDetailCard extends Component {
   renderMainHero() {
@@ -119,7 +120,7 @@ class PlayerDetailCard extends Component {
       }
     }
     if (error) {
-      return <h1 className='display-4 text-danger text-center'>{data}</h1>
+      return <Redirect to='/player/notfound' />
     } else {
       return (
         <Fragment>
