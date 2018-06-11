@@ -22,7 +22,13 @@ class PlayerDetail extends Component {
     if (isFetching) {
       return (
         <div className='d-flex justify-content-center align-item-center mt-4'>
-          <Spin tip='Fetching Data...' size='large' />
+          <Spin
+            tip='Fetching Player Data...'
+            size='large'
+            indicator={
+              <img src='/images/misc/ow-loading.gif' className='img-fluid mb-4' alt='loading-gif' style={{ width: '250px', height: '250px' }} />
+              }
+            />
         </div>
       );
     } else {
