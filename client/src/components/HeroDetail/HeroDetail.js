@@ -66,6 +66,34 @@ class HeroDetail extends Component {
         width: '20%'
       }];
 
+      const columns3 = [{
+        title: 'Most Obj. Kills',
+        dataIndex: 'mostObjKills',
+        key: 'mostObjKills',
+        width: '20%'
+      }, {
+        title: 'Most Solo Kills',
+        dataIndex: 'mostSoloKills',
+        key: 'mostSoloKills',
+        width: '20%'
+      }, {
+        title: 'Most Kill Streaks',
+        dataIndex: 'mostKillStreaks',
+        key: 'mostKillStreaks',
+        width: '20%'
+      }, {
+        title: 'Most Critical Hits',
+        dataIndex: 'mostCriticalHits',
+        key: 'mostCriticalHits',
+        width: '20%'
+      }, {
+        title: 'Deaths',
+        dataIndex: 'deaths',
+        key: 'deaths',
+        width: '20%'
+
+      }];
+
       const data1 = [{
         key: '1',
         kd: <p className='lead'>{value.average.eliminationsPerLife || 'N/A'}</p>,
@@ -84,10 +112,20 @@ class HeroDetail extends Component {
           multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
       }];
 
+      const data3 = [{
+        key: '3',
+        mostObjKills: <p className='lead'>{value.best.objectiveKillsMostInGame || 'N/A'}</p>,
+        mostSoloKills: <p className='lead'>{value.best.soloKillsMostInGame.toLocaleString() || 'N/A'}</p>,
+        mostKillStreaks: <p className='lead'>{value.best.killsStreakBest || 'N/A'}</p>,
+        mostCriticalHits: <p className='lead'>{value.best.criticalHitsMostInGame || 'N/A'}</p>,
+        deaths: <p className='lead'>{value.deaths.deaths || 'N/A'}</p>
+    }];
+
       return (
         <Fragment>
           <Table columns={columns1} dataSource={data1} pagination={false} />
           <Table columns={columns2} dataSource={data2} pagination={false} />
+          <Table columns={columns3} dataSource={data3} pagination={false} />
         </Fragment>
       );
     }
