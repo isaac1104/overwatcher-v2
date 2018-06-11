@@ -5,6 +5,7 @@ import ContentLayout from './Layout/ContentLayout';
 import Navbar from './Navbar';
 import Home from './Home';
 import PlayerDetail from './PlayerDetail/PlayerDetail';
+import NotFound from './NotFound';
 
 class App extends Component {
   render() {
@@ -14,8 +15,9 @@ class App extends Component {
             <Navbar/>
             <ContentLayout>
               <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route exact path='/player/:id' component={PlayerDetail}/>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/player/notfound' component={NotFound} />
+                <Route exact path='/player/stats/:id' component={PlayerDetail} />
               </Switch>
             </ContentLayout>
           </Layout>
