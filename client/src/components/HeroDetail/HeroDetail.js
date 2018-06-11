@@ -5,7 +5,7 @@ import { resetHeroData } from '../../actions';
 import { Avatar, Badge, Card, Divider, Table } from 'antd';
 
 class HeroDetail extends Component {
-  componentDidMount() {
+  componentWillUnmount() {
     this.props.resetHeroData();
   }
 

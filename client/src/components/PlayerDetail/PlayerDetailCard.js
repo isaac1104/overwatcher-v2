@@ -106,7 +106,7 @@ class PlayerDetailCard extends Component {
   }
 
   renderDetail() {
-    const { data, error } = this.props.playerData;
+    const { data } = this.props.playerData;
     const style = {
       playerBackground: {
         backgroundColor: '#343a40'

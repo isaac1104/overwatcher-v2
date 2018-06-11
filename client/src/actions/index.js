@@ -16,6 +16,10 @@ const playerDataError = error => ({
   payload: error
 });
 
+export const resetPlayerData = () => ({
+  type: RESET_PLAYER_DATA
+});
+
 export const fetchPlayerData = battletag => async dispatch => {
   dispatch(requestPlayerData());
   const request = await axios.get('/api/playerData', {
@@ -31,15 +35,11 @@ export const fetchPlayerData = battletag => async dispatch => {
   }
 }
 
-export const resetPlayerData = () => ({
-  type: RESET_PLAYER_DATA
+export const fetchHeroData = hero => ({
+  type: FETCH_HERO_DATA,
+  payload: hero
 });
 
 export const resetHeroData = () => ({
   type: RESET_HERO_DATA
-});
-
-export const fetchHeroData = hero => ({
-  type: FETCH_HERO_DATA,
-  payload: hero
 });
