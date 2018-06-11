@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PlayerDetailCard from './PlayerDetailCard';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { fetchPlayerData, resetPlayerData } from '../../actions';
 
 class PlayerDetail extends Component {
@@ -22,13 +23,18 @@ class PlayerDetail extends Component {
   }
 
   renderPlayerDetail() {
-    const { isFetching } = this.props.playerData;
+    const { error, isFetching } = this.props.playerData;
     const style = {
       loading: {
         width: '250px',
         height: '250px'
       }
     }
+
+    if (error) {
+      return <Redirect to='/player/notfound' />
+    }
+
     if (isFetching) {
       return (
         <div className='d-flex justify-content-center align-item-center mt-4'>

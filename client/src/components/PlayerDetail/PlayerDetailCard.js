@@ -4,7 +4,6 @@ import HeroDetail from '../HeroDetail/HeroDetail';
 import { Avatar, Card, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
-import { Redirect } from 'react-router-dom';
 
 class PlayerDetailCard extends Component {
   renderMainHero() {
@@ -119,54 +118,50 @@ class PlayerDetailCard extends Component {
         justifyContent: 'space-evenly'
       }
     }
-    if (error) {
-      return <Redirect to='/player/notfound' />
-    } else {
       return (
-        <Fragment>
-          {this.renderMainHero()}
-          <div className='row'>
-            <Card bordered={ false } className='col-md-6' style={style.playerBackground}>
-              {data.competitiveStats ? (
-                <Fragment>
-                  <div className='row text-center'>
-                    <Card className='col-md-3' title='Games Won' bordered={ false }>
-                      <h6 className='lead detail-text'>{data.gamesWon}</h6>
-                    </Card>
-                    <Card className='col-md-3' title='Win Rate' bordered={ false }>
-                      <h6 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
-                    </Card>
-                    <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
-                      <h6 className='lead detail-text'>
-                        {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
-                      </h6>
-                    </Card>
-                    <Card className='col-md-3' title='Time Played' bordered={ false }>
-                      <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
-                    </Card>
+      <Fragment>
+        {this.renderMainHero()}
+        <div className='row'>
+          <Card bordered={ false } className='col-md-6' style={style.playerBackground}>
+            {data.competitiveStats ? (
+              <Fragment>
+                <div className='row text-center'>
+                  <Card className='col-md-3' title='Games Won' bordered={ false }>
+                    <h6 className='lead detail-text'>{data.gamesWon}</h6>
+                  </Card>
+                  <Card className='col-md-3' title='Win Rate' bordered={ false }>
+                    <h6 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
+                  </Card>
+                  <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
+                    <h6 className='lead detail-text'>
+                      {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
+                    </h6>
+                  </Card>
+                  <Card className='col-md-3' title='Time Played' bordered={ false }>
+                    <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
+                  </Card>
+                </div>
+                <Card title='Most Played Heroes' bordered={ false } className='text-center'>
+                  <div className='d-flex align-items-center' style={style.mostPlayed}>
+                    {this.renderMostPlayedHeroes()}
                   </div>
-                  <Card title='Most Played Heroes' bordered={ false } className='text-center'>
-                    <div className='d-flex align-items-center' style={style.mostPlayed}>
-                      {this.renderMostPlayedHeroes()}
-                    </div>
-                  </Card>
-                  <Card title='All Played Heroes' bordered= { false } className='text-center'>
-                    <div className='row'>
-                      {this.renderAllPlayedHeroes()}
-                    </div>
-                  </Card>
-                </Fragment>
-              ) : (
-                <div />
-              )}
-            </Card>
-            <Card bordered={ false } className='col-md-6 text-center' style={style.heroBackground}>
-              <HeroDetail />
-            </Card>
-          </div>
-        </Fragment>
-      );
-    }
+                </Card>
+                <Card title='All Played Heroes' bordered= { false } className='text-center'>
+                  <div className='row'>
+                    {this.renderAllPlayedHeroes()}
+                  </div>
+                </Card>
+              </Fragment>
+            ) : (
+              <div />
+            )}
+          </Card>
+          <Card bordered={ false } className='col-md-6 text-center' style={style.heroBackground}>
+            <HeroDetail />
+          </Card>
+        </div>
+      </Fragment>
+    );
   }
 
   render() {
