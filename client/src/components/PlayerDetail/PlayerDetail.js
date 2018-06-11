@@ -21,7 +21,7 @@ class PlayerDetail extends Component {
     const { isFetching } = this.props.playerData;
     if (isFetching) {
       return (
-        <div className='d-flex justify-content-center align-item-center'>
+        <div className='d-flex justify-content-center align-item-center mt-4'>
           <Spin tip='Fetching Data...' size='large' />
         </div>
       );
