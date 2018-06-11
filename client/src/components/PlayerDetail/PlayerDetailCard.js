@@ -92,9 +92,11 @@ class PlayerDetailCard extends Component {
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
         return (
-          <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)} style={style.cursor}>
-            <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
-            <p className='lead text-capitalize detail-text'>{hero.name}</p>
+          <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
+            <div style={style.cursor}>
+              <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
+              <p className='lead text-capitalize detail-text'>{hero.name}</p>
+            </div>
           </div>
         );
       });
