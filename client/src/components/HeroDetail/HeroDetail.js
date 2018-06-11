@@ -115,7 +115,7 @@ class HeroDetail extends Component {
       const data3 = [{
         key: '3',
         mostObjKills: <p className='lead'>{value.best.objectiveKillsMostInGame || 'N/A'}</p>,
-        mostSoloKills: <p className='lead'>{value.best.soloKillsMostInGame.toLocaleString() || 'N/A'}</p>,
+        mostSoloKills: <p className='lead'>{value.best.soloKillsMostInGame || 'N/A'}</p>,
         mostKillStreaks: <p className='lead'>{value.best.killsStreakBest || 'N/A'}</p>,
         mostCriticalHits: <p className='lead'>{value.best.criticalHitsMostInGame || 'N/A'}</p>,
         deaths: <p className='lead'>{value.deaths.deaths || 'N/A'}</p>

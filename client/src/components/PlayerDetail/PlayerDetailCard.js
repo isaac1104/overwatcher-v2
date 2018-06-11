@@ -55,6 +55,11 @@ class PlayerDetailCard extends Component {
 
   renderMostPlayedHeroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
+    const style = {
+      cursor: {
+        cursor: 'pointer'
+      }
+    }
     if (data.competitiveStats) {
       const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
         return { name: key, value }
@@ -63,7 +68,7 @@ class PlayerDetailCard extends Component {
       }).splice(0, 3);
       return top3Heroes.map(hero => {
         return (
-          <div onClick={() => fetchHeroData(hero)} key={hero.name}>
+          <div onClick={() => fetchHeroData(hero)} key={hero.name} style={style.cursor}>
             <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
             <h6 className='lead text-capitalize detail-text'>{hero.name}</h6>
           </div>
@@ -76,13 +81,18 @@ class PlayerDetailCard extends Component {
 
   renderAllPlayedHeroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
+    const style = {
+      cursor: {
+        cursor: 'pointer'
+      }
+    }
     if (data.competitiveStats) {
       const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
         return { name: key, value }
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
         return (
-          <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
+          <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)} style={style.cursor}>
             <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
             <p className='lead text-capitalize detail-text'>{hero.name}</p>
           </div>
