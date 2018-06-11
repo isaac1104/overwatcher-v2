@@ -95,6 +95,26 @@ class HeroDetail extends Component {
 
   renderHeroStats() {
     const { data, data: { value } } = this.props.heroData;
+    const style = {
+      avatar: {
+        width: '100px',
+        height: '100px',
+        borderRadius: '50%',
+        marginRight: '10px'
+      },
+      medals: {
+        gold: {
+          backgroundColor: 'gold',
+          marginLeft: '10px'
+        },
+        silver: {
+          backgroundColor: 'silver'
+        },
+        bronze: {
+          backgroundColor: '#CD7F32'
+        }
+      }
+    }
     if (value) {
       return (
         <Fragment>
@@ -106,7 +126,7 @@ class HeroDetail extends Component {
                 <div className='col-md-4'>
                   <h3 className='text-capitalize'>
                     <Avatar
-                      style={{ width: '100px', height: '100px', borderRadius: '50%', marginRight: '10px' }}
+                      style={style.avatar}
                       icon='user'
                       size='large'
                       src={`/images/heroes/${data.name}.png`}
@@ -120,20 +140,20 @@ class HeroDetail extends Component {
                     <h6>
                       Medals
                       <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
-                        style={{ background: 'gold', marginLeft: '10px' }}
+                        style={style.medals.gold}
                         showZero
                         overflowCount={999}
                       />
                       <Divider type='vertical' />
                       <Badge
                         count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
-                        style={{ background: 'silver' }}
+                        style={style.medals.silver}
                         showZero
                         overflowCount={999}
                       />
                       <Divider type='vertical' />
                       <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
-                        style={{ background: '#CD7F32' }}
+                        style={style.medals.bronze}
                         showZero
                         overflowCount={999}
                       />

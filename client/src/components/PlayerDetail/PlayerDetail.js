@@ -19,6 +19,12 @@ class PlayerDetail extends Component {
 
   renderPlayerDetail() {
     const { isFetching } = this.props.playerData;
+    const style = {
+      loading: {
+        width: '250px',
+        height: '250px'
+      }
+    }
     if (isFetching) {
       return (
         <div className='d-flex justify-content-center align-item-center mt-4'>
@@ -26,7 +32,7 @@ class PlayerDetail extends Component {
             tip='Fetching Player Data...'
             size='large'
             indicator={
-              <img src='/images/misc/ow-loading.gif' className='img-fluid mb-4' alt='loading-gif' style={{ width: '250px', height: '250px' }} />
+              <img src='/images/misc/ow-loading.gif' className='img-fluid mb-4' alt='loading-gif' style={style.loading} />
               }
             />
         </div>

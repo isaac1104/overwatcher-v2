@@ -8,6 +8,14 @@ import { fetchHeroData } from '../../actions';
 class PlayerDetailCard extends Component {
   renderMainHero() {
     const { data } = this.props.playerData;
+    const style = {
+      text: {
+        color: '#fff'
+      },
+      image: {
+        width: '50px'
+      }
+    }
     if (data.competitiveStats) {
       const mainHero = _.map(data.competitiveStats.topHeroes, (value, key) => {
         return { name: key, gamesWon: value.gamesWon }
@@ -32,9 +40,9 @@ class PlayerDetailCard extends Component {
             <img src={data.icon} className='img-fluid' alt='icon' />
           </div>
           <div className='col-md-11'>
-            <h1 className='display-4 text-uppercase' style={{ color: '#fff' }}>{data.name}</h1>
-            <h3 className='lead' style={{ color: '#fff' }}>
-              <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
+            <h1 className='display-4 text-uppercase' style={style.text}>{data.name}</h1>
+            <h3 className='lead' style={style.text}>
+              <img src={data.ratingIcon} className='img-fluid' alt='icon' style={style.image} />
               {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
             </h3>
           </div>
@@ -87,6 +95,17 @@ class PlayerDetailCard extends Component {
 
   renderDetail() {
     const { error, data } = this.props.playerData;
+    const style = {
+      playerBackground: {
+        backgroundColor: '#343a40'
+      },
+      heroBackground: {
+        backgroundColor: '#f0f2f5'
+      },
+      mostPlayed: {
+        justifyContent: 'space-evenly'
+      }
+    }
     if (error) {
       return <h1 className='display-4 text-danger text-center'>{data}</h1>
     } else {
@@ -94,7 +113,7 @@ class PlayerDetailCard extends Component {
         <Fragment>
           {this.renderMainHero()}
           <div className='row'>
-            <Card bordered={ false } className='col-md-6' style={{ backgroundColor: '#343a40' }}>
+            <Card bordered={ false } className='col-md-6' style={style.playerBackground}>
               {data.competitiveStats ? (
                 <Fragment>
                   <div className='row text-center'>
@@ -114,7 +133,7 @@ class PlayerDetailCard extends Component {
                     </Card>
                   </div>
                   <Card title='Most Played Heroes' bordered={ false } className='text-center'>
-                    <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
+                    <div className='d-flex align-items-center' style={style.mostPlayed}>
                       {this.renderMostPlayedHeroes()}
                     </div>
                   </Card>
@@ -128,7 +147,7 @@ class PlayerDetailCard extends Component {
                 <div />
               )}
             </Card>
-            <Card bordered={ false } className='col-md-6 text-center' style={{ backgroundColor: '#f0f2f5' }}>
+            <Card bordered={ false } className='col-md-6 text-center' style={style.heroBackground}>
               <HeroDetail />
             </Card>
           </div>
