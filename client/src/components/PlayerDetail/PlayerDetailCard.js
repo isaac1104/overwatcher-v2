@@ -32,10 +32,10 @@ class PlayerDetailCard extends Component {
             <img src={data.icon} className='img-fluid' alt='icon' />
           </div>
           <div className='col-md-11'>
-            <h1 className='display-4' style={{ color: '#fff' }}>{data.name}</h1>
+            <h1 className='display-4 text-uppercase' style={{ color: '#fff' }}>{data.name}</h1>
             <h3 className='lead' style={{ color: '#fff' }}>
               <img src={data.ratingIcon} className='img-fluid' alt='icon' style={{ width: '50px' }} />
-              {data.ratingName}<Divider type='vertical' /> {data.rating} Points
+              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
             </h3>
           </div>
         </div>
@@ -98,6 +98,9 @@ class PlayerDetailCard extends Component {
               {data.competitiveStats ? (
                 <Fragment>
                   <div className='row text-center'>
+                    <Card className='col-md-3' title='Games Won' bordered={ false }>
+                      <h6 className='lead'>{data.gamesWon}</h6>
+                    </Card>
                     <Card className='col-md-3' title='Win Rate' bordered={ false }>
                       <h6 className='lead'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
                     </Card>
@@ -108,9 +111,6 @@ class PlayerDetailCard extends Component {
                     </Card>
                     <Card className='col-md-3' title='Time Played' bordered={ false }>
                       <h6 className='lead'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
-                    </Card>
-                    <Card className='col-md-3' title='Games Won' bordered={ false }>
-                      <h6 className='lead'>{data.gamesWon}</h6>
                     </Card>
                   </div>
                   <Card title='Most Played Heroes' bordered={ false } className='text-center'>
