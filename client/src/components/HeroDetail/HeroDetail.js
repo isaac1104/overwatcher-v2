@@ -77,10 +77,10 @@ class HeroDetail extends Component {
 
         const data2 = [{
           key: '2',
-          avgDamage: <p className='lead'>{value.average.allDamageDone || 'NA'}</p>,
-          heroDamage: <p className='lead'>{value.combat.heroDamageDone || 'NA'}</p>,
-          objTime: <p className='lead'>{value.combat.objectiveTime || 'NA'}</p>,
-          timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'NA'}</p>,
+          avgDamage: <p className='lead'>{value.average.allDamageDone || 'N/A'}</p>,
+          heroDamage: <p className='lead'>{value.combat.heroDamageDone || 'N/A'}</p>,
+          objTime: <p className='lead'>{value.combat.objectiveTime || 'N/A'}</p>,
+          timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'N/A'}</p>,
           multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
       }];
 
@@ -115,7 +115,7 @@ class HeroDetail extends Component {
                 </div>
                 <div className='col-md-8' style={{ marginTop: '2.4rem' }}>
                   <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
-                    <h6 className='lead'>{value.game.gamesWon || '0'} Wins</h6>
+                    <h6 className='lead'>{value.game.gamesWon || 0} Wins</h6>
                     <h6>
                       Medals
                       <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
