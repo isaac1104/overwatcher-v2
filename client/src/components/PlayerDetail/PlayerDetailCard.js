@@ -66,7 +66,7 @@ class PlayerDetailCard extends Component {
     }
   }
 
-  renderAllHeroes() {
+  renderAllPlayedHeroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
     if (data.competitiveStats) {
       const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
@@ -118,9 +118,9 @@ class PlayerDetailCard extends Component {
                       {this.renderMostPlayedHeroes()}
                     </div>
                   </Card>
-                  <Card title='All Heroes' bordered= { false } className='text-center'>
+                  <Card title='All Played Heroes' bordered= { false } className='text-center'>
                     <div className='row'>
-                      {this.renderAllHeroes()}
+                      {this.renderAllPlayedHeroes()}
                     </div>
                   </Card>
                 </Fragment>
