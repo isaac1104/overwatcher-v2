@@ -36,8 +36,7 @@ export const resetPlayerData = () => ({
 });
 
 export const resetHeroData = () => ({
-  type: RESET_HERO_DATA,
-  payload: {}
+  type: RESET_HERO_DATA
 });
 
 export const fetchHeroData = hero => ({

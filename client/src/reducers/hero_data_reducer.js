@@ -12,10 +12,7 @@ function heroDataReducer(state = INITIAL_STATE, action) {
         data: action.payload
       };
     case RESET_HERO_DATA:
-      return {
-        ...state,
-        data: action.payload
-      };
+      return INITIAL_STATE;
     default:
       return state;
   }
