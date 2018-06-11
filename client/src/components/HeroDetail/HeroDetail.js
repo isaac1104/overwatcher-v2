@@ -72,13 +72,13 @@ class HeroDetail extends Component {
           gamesPlayed: <p className='lead'>{value.game.gamesPlayed || 'N/A'}</p>,
           winPercentage: <p className='lead'>{value.game.winPercentage || 'N/A'}</p>,
           weaponAccuracy: <p className='lead'>{value.combat.weaponAccuracy || 'N/A'}</p>,
-          damageDone: <p className='lead'>{value.combat.damageDone || 'N/A'}</p>
+          damageDone: <p className='lead'>{value.combat.damageDone.toLocaleString() || 'N/A'}</p>
         }];
 
         const data2 = [{
           key: '2',
           avgDamage: <p className='lead'>{value.average.allDamageDone || 'N/A'}</p>,
-          heroDamage: <p className='lead'>{value.combat.heroDamageDone || 'N/A'}</p>,
+          heroDamage: <p className='lead'>{value.combat.heroDamageDone.toLocaleString() || 'N/A'}</p>,
           objTime: <p className='lead'>{value.combat.objectiveTime || 'N/A'}</p>,
           timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'N/A'}</p>,
           multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
