@@ -36,12 +36,12 @@ class PlayerDetailCard extends Component {
             backgroundAttachment: 'fixed'
           }}>
           <Row>
-            <Col sm={2} className='mt-3'>
+            <Col sm={2}>
               <img src={data.icon} className='img-fluid' alt='icon' />
             </Col>
             <Col sm={22}>
-              <h1 className='display-4 text-uppercase' style={style.text}>{data.name}</h1>
-              <h3 className='lead' style={style.text}>
+              <h1 style={style.text}>{data.name}</h1>
+              <h3 style={style.text}>
                 <img src={data.ratingIcon} className='img-fluid' alt='icon' style={style.image} />
                 {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
               </h3>
@@ -71,7 +71,7 @@ class PlayerDetailCard extends Component {
         return (
           <div onClick={() => fetchHeroData(hero)} key={hero.name} style={style.cursor}>
             <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
-            <h6 className='lead text-capitalize detail-text'>{hero.name}</h6>
+            <h6 className='detail-text'>{hero.name}</h6>
           </div>
         );
       });
@@ -93,10 +93,10 @@ class PlayerDetailCard extends Component {
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
         return (
-          <Col sm={4} key={hero.name} onClick={() => fetchHeroData(hero)}>
-            <div style={style.cursor}>
+          <Col sm={4}>
+            <div style={style.cursor} onClick={() => fetchHeroData(hero)} key={hero.name}>
               <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
-              <p className='lead text-capitalize detail-text'>{hero.name}</p>
+              <p className='detail-text'>{hero.name}</p>
             </div>
           </Col>
         );
@@ -110,10 +110,12 @@ class PlayerDetailCard extends Component {
     const { data } = this.props.playerData;
     const style = {
       playerBackground: {
-        backgroundColor: '#343a40'
+        backgroundColor: '#343a40',
+        height: '90vh'
       },
       heroBackground: {
-        backgroundColor: '#f0f2f5'
+        backgroundColor: '#f0f2f5',
+        height: '90vh'
       },
       mostPlayed: {
         justifyContent: 'space-evenly'
@@ -123,11 +125,11 @@ class PlayerDetailCard extends Component {
       <Fragment>
         {this.renderMainHero()}
         <Row className='row'>
-          <Col sm={12}>
+          <Col sm={12} style={style.playerBackground}>
             <Card bordered={ false } style={style.playerBackground}>
               {data.competitiveStats ? (
                 <Fragment>
-                  <Row className='text-center'>
+                  <Row>
                     <Col sm={6}>
                       <Card title='Games Won' bordered={ false }>
                         <h6 className='lead detail-text'>{data.gamesWon}</h6>
@@ -154,20 +156,18 @@ class PlayerDetailCard extends Component {
                   <Card
                     title={<p><Icon type='user' /> Most Played Heroes</p>}
                     bordered={ false }
-                    className='text-center'
                   >
-                    <div className='d-flex align-items-center' style={style.mostPlayed}>
+                    <Row type='flex' justify='space-around' align='middle'>
                       {this.renderMostPlayedHeroes()}
-                    </div>
+                    </Row>
                   </Card>
                   <Card
                     title={<p><Icon type='usergroup-add' /> All Played Heroes</p>}
                     bordered= { false }
-                    className='text-center'
                   >
-                    <div className='row'>
+                    <Row>
                       {this.renderAllPlayedHeroes()}
-                    </div>
+                    </Row>
                   </Card>
                 </Fragment>
               ) : (
@@ -175,8 +175,8 @@ class PlayerDetailCard extends Component {
               )}
             </Card>
           </Col>
-          <Col sm={12}>
-            <Card bordered={ false } className='text-center' style={style.heroBackground}>
+          <Col sm={12} style={style.heroBackground}>
+            <Card bordered={ false } style={style.heroBackground}>
               <HeroDetail />
             </Card>
           </Col>

@@ -18,8 +18,9 @@ body {
   background: transparent !important;
 }
 
-.ant-card .text-center {
+.ant-card {
   background: transparent !important;
+  text-align: center;
 }
 
 .ant-col-sm-6 .ant-card {

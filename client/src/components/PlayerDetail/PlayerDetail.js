@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PlayerDetailCard from './PlayerDetailCard';
-import { Spin } from 'antd';
+import { Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { fetchPlayerData, resetPlayerData } from '../../actions';
@@ -37,7 +37,7 @@ class PlayerDetail extends Component {
 
     if (isFetching) {
       return (
-        <div className='d-flex justify-content-center align-item-center mt-4'>
+        <Row type='flex' justify='center' align='middle'>
           <Spin
             tip='Fetching Player Data...'
             size='large'
@@ -45,7 +45,7 @@ class PlayerDetail extends Component {
               <img src='/images/misc/ow-loading.gif' className='img-fluid mb-4' alt='loading-gif' style={style.loading} />
               }
             />
-        </div>
+        </Row>
       );
     } else {
       return <PlayerDetailCard />
