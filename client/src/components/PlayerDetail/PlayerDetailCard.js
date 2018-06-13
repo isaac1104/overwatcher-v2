@@ -64,8 +64,8 @@ class PlayerDetailCard extends Component {
         cursor: 'pointer'
       },
       avatar: {
-        width: '100px',
-        height: '100px',
+        width: '70px',
+        height: '70px',
         borderRadius: '50%'
       }
     }
