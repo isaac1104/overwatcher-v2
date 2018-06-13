@@ -3,7 +3,8 @@ import React from 'react';
 const NotFound = () => {
   const style = {
     container: {
-      textAlign: 'center'
+      textAlign: 'center',
+      height: '90vh'
     },
     font: {
       h1: {

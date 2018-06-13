@@ -25,6 +25,9 @@ class PlayerDetail extends Component {
   renderPlayerDetail() {
     const { error, isFetching } = this.props.playerData;
     const style = {
+      container: {
+        height: '90vh'
+      },
       loading: {
         width: '250px',
         height: '250px'
@@ -37,7 +40,7 @@ class PlayerDetail extends Component {
 
     if (isFetching) {
       return (
-        <Row type='flex' justify='center' align='middle'>
+        <Row type='flex' justify='center' align='middle' style={style.container}>
           <Spin
             size='large'
             indicator={
