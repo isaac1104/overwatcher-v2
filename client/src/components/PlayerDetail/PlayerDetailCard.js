@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
-import { Avatar, Card, Divider } from 'antd';
+import { Avatar, Card, Divider, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
@@ -141,12 +141,20 @@ class PlayerDetailCard extends Component {
                     <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
                   </Card>
                 </div>
-                <Card title='Most Played Heroes' bordered={ false } className='text-center'>
+                <Card
+                  title={<p><Icon type='user' /> Most Played Heroes</p>}
+                  bordered={ false }
+                  className='text-center'
+                >
                   <div className='d-flex align-items-center' style={style.mostPlayed}>
                     {this.renderMostPlayedHeroes()}
                   </div>
                 </Card>
-                <Card title='All Played Heroes' bordered= { false } className='text-center'>
+                <Card
+                  title={<p><Icon type='usergroup-add' /> All Played Heroes</p>} 
+                  bordered= { false }
+                  className='text-center'
+                >
                   <div className='row'>
                     {this.renderAllPlayedHeroes()}
                   </div>
