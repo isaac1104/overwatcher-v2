@@ -17,6 +17,9 @@ class Form extends Component {
       form: {
         display: 'flex',
         alignItems: 'center'
+      },
+      button: {
+        marginLeft: '10px'
       }
     }
     return (
@@ -25,7 +28,7 @@ class Form extends Component {
           name="battletag"
           component={FormField}
         />
-        <Button type="default" shape="circle" icon="search" size='large' htmlType='submit' style={{ marginLeft: '10px' }} />
+        <Button type="default" shape="circle" icon="search" size='large' htmlType='submit' style={style.button} />
       </form>
     );
   }
