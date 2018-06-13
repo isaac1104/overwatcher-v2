@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 import ContentLayout from './Layout/ContentLayout';
 import Navbar from './Navbar';
 import FooterNav from './FooterNav';
@@ -11,7 +12,8 @@ import NotFound from './NotFound';
 class App extends Component {
   render() {
     return (
-        <BrowserRouter>
+      <BrowserRouter>
+        <ScrollToTop>
           <Layout>
             <Navbar/>
             <ContentLayout>
@@ -23,6 +25,7 @@ class App extends Component {
             </ContentLayout>
             <FooterNav />
           </Layout>
+        </ScrollToTop>
       </BrowserRouter>
     );
   }
