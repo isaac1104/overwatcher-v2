@@ -173,7 +173,7 @@ class PlayerDetailCard extends Component {
                     title={<p><Icon type='usergroup-add' /> All Played Heroes</p>}
                     bordered= { false }
                   >
-                    <Row>
+                    <Row style={{ paddingTop: '30px' }}>
                       {this.renderAllPlayedHeroes()}
                     </Row>
                   </Card>
