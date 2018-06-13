@@ -21,6 +21,7 @@ body {
 .ant-card {
   background: transparent !important;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .ant-col-sm-6 .ant-card {

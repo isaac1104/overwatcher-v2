@@ -14,6 +14,9 @@ class PlayerDetailCard extends Component {
       },
       image: {
         width: '50px'
+      },
+      row: {
+        padding: '10px'
       }
     }
     if (data.competitiveStats) {
@@ -35,7 +38,7 @@ class PlayerDetailCard extends Component {
             backgroundPosition: 'center center',
             backgroundAttachment: 'fixed'
           }}>
-          <Row>
+          <Row style={style.row}>
             <Col sm={2}>
               <img src={data.icon} className='img-fluid' alt='icon' />
             </Col>
@@ -59,6 +62,11 @@ class PlayerDetailCard extends Component {
     const style = {
       cursor: {
         cursor: 'pointer'
+      },
+      avatar: {
+        width: '100px',
+        height: '100px',
+        borderRadius: '50%'
       }
     }
     if (data.competitiveStats) {
@@ -70,8 +78,8 @@ class PlayerDetailCard extends Component {
       return top3Heroes.map(hero => {
         return (
           <div onClick={() => fetchHeroData(hero)} key={hero.name} style={style.cursor}>
-            <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
-            <h6 className='detail-text'>{hero.name}</h6>
+            <Avatar size='large' src={`/images/heroes/${hero.name}.png`} style={style.avatar} />
+            <h4 className='detail-text'>{hero.name}</h4>
           </div>
         );
       });
@@ -132,24 +140,24 @@ class PlayerDetailCard extends Component {
                   <Row>
                     <Col sm={6}>
                       <Card title='Games Won' bordered={ false }>
-                        <h6 className='lead detail-text'>{data.gamesWon}</h6>
+                        <h3 className='lead detail-text'>{data.gamesWon}</h3>
                       </Card>
                     </Col>
                     <Col sm={6}>
                       <Card title='Win Rate' bordered={ false }>
-                        <h6 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
+                        <h3 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h3>
                       </Card>
                     </Col>
                     <Col sm={6}>
                       <Card title='K/D Ratio' bordered={ false }>
-                        <h6 className='lead detail-text'>
+                        <h3 className='lead detail-text'>
                           {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
-                        </h6>
+                        </h3>
                       </Card>
                     </Col>
                     <Col sm={6}>
                       <Card title='Time Played' bordered={ false }>
-                        <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
+                        <h3 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h3>
                       </Card>
                     </Col>
                   </Row>
