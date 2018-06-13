@@ -39,7 +39,6 @@ class PlayerDetail extends Component {
       return (
         <Row type='flex' justify='center' align='middle'>
           <Spin
-            tip='Fetching Player Data...'
             size='large'
             indicator={
               <img src='/images/misc/ow-loading.gif' alt='loading-gif' style={style.loading} />
