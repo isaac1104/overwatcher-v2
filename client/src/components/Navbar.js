@@ -32,6 +32,12 @@ const { Header } = Layout;
 
 class Navbar extends Component {
   render() {
+    const style = {
+      menuItem: {
+        cursor: 'auto'
+      }
+    }
+
     return (
       <Header>
         <Menu
@@ -44,7 +50,7 @@ class Navbar extends Component {
               <img src='/images/misc/owlogo.svg' className='img-fluid' alt='logo' width='50' height= '50'/> OVERWATCHER V2
             </Link>
           </Menu.Item>
-          <Menu.Item key="2" className='float-right'>
+          <Menu.Item key="2" className='float-right' style={style.menuItem}>
             <SearchForm />
           </Menu.Item>
         </Menu>

@@ -16,10 +16,12 @@ class Form extends Component {
     const style = {
       form: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: '-52px'
       },
       button: {
-        marginLeft: '10px'
+        marginLeft: '10px',
+        marginTop: '45px'
       }
     }
     return (
