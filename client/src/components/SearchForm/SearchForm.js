@@ -25,6 +25,7 @@ class Form extends Component {
       <form onSubmit={handleSubmit(this.formSubmit)} style={style.form}>
         <Field
           name='battletag'
+          autoComplete='off'
           component={FormField}
         />
       </form>

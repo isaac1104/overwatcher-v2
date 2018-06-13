@@ -1,6 +1,6 @@
 import { createComponent, customMap } from 'redux-form-antd';
 import { Input } from 'antd';
-const Search = Input.Search;
+const { Search } = Input;
 
 function mapFunction(mapProps, { input: { onChange } } ) {
   return {
