@@ -7,7 +7,7 @@ const Home = () => {
     },
     font: {
       h1: {
-        fontSize: '60px',
+        fontSize: '3em',
         color: '#13c2c2',
         fontWeight: 'bold'
       },

@@ -3,9 +3,6 @@ import { Layout } from 'antd';
 
 const { Content } = Layout;
 const style = {
-  layout: {
-    padding: '0 24px'
-  },
   content: {
     background: '#fff',
     padding: 24,
@@ -16,11 +13,9 @@ const style = {
 
 const ContentLayout = props => {
   return (
-    <Layout style={ style.layout }>
-      <Content style={ style.content }>
-        { props.children }
-      </Content>
-    </Layout>
+    <Content style={ style.content }>
+      { props.children }
+    </Content>
   );
 }
 

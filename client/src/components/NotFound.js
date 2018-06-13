@@ -7,7 +7,7 @@ const NotFound = () => {
     },
     font: {
       h1: {
-        fontSize: '60px',
+        fontSize: '3em',
         color:'#ff4d4f',
         fontWeight: 'bold'
       },

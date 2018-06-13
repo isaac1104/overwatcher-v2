@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <ScrollToTop>
-          <Layout className='layout'>
+          <Layout>
             <Navbar/>
             <ContentLayout>
               <Switch>
