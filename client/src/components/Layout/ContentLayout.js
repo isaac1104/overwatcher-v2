@@ -3,19 +3,23 @@ import { Layout } from 'antd';
 
 const { Content } = Layout;
 const style = {
+  layout: {
+    padding: '0 24px'
+  },
   content: {
     background: '#fff',
     padding: 24,
-    margin: 0,
-    minHeight: '90vh'
+    margin: 0
   }
 }
 
 const ContentLayout = props => {
   return (
-    <Content style={ style.content }>
-      { props.children }
-    </Content>
+    <Layout style={style.layout}>
+      <Content style={style.content}>
+        {props.children}
+      </Content>
+    </Layout>
   );
 }
 

@@ -195,7 +195,6 @@ class HeroDetail extends Component {
                       overflowCount={999}
                     />
                   </h3>
-
                 </Col>
               </Row>
             }
@@ -212,7 +211,7 @@ class HeroDetail extends Component {
     return (
       <div>
         {_.isEmpty(data) ? (
-            <h1 className='display-4 lead'>Click a hero portrait to display hero data</h1>
+            <h1>Click a hero portrait to display hero data</h1>
           ) : (
             this.renderHeroStats()
           )

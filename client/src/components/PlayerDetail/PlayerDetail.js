@@ -42,7 +42,7 @@ class PlayerDetail extends Component {
             tip='Fetching Player Data...'
             size='large'
             indicator={
-              <img src='/images/misc/ow-loading.gif' className='img-fluid mb-4' alt='loading-gif' style={style.loading} />
+              <img src='/images/misc/ow-loading.gif' alt='loading-gif' style={style.loading} />
               }
             />
         </Row>
