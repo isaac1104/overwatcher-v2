@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
-import FormField from './FormField';
 import { Field, reduxForm } from 'redux-form';
+import { TextField } from 'redux-form-antd';
 import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
@@ -16,19 +16,17 @@ class Form extends Component {
     const style = {
       form: {
         display: 'flex',
-        alignItems: 'center',
-        marginTop: '-52px'
+        marginTop: '12px'
       },
       button: {
-        marginLeft: '10px',
-        marginTop: '47px'
+        marginLeft: '10px'
       }
     }
     return (
       <form onSubmit={handleSubmit(this.formSubmit)} style={style.form}>
         <Field
           name='battletag'
-          component={FormField}
+          component={TextField}
         />
         <Button type='default' shape='circle' icon='search' size='large' htmlType='submit' style={style.button} />
       </form>
