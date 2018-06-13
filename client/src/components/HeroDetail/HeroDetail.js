@@ -13,7 +13,7 @@ class HeroDetail extends Component {
     const { data: { value } } = this.props.heroData;
     if (value) {
       const columns1 = [{
-        title: 'K/D',
+        title: 'K/D Ratio',
         dataIndex: 'kd',
         key: 'kd',
         width: '20%'
