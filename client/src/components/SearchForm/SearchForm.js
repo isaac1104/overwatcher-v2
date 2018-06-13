@@ -21,7 +21,7 @@ class Form extends Component {
       },
       button: {
         marginLeft: '10px',
-        marginTop: '45px'
+        marginTop: '47px'
       }
     }
     return (

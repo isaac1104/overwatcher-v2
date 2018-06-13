@@ -38,6 +38,10 @@ body {
   background-color: #fff !important;
 }
 
+.anticon-search {
+  margin-left: 10px !important;
+}
+
 .detail-text {
   color: #fff !important
 }
