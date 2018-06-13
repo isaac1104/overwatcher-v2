@@ -37,11 +37,8 @@ class PlayerDetailCard extends Component {
       return (
         <div
           style={{
-            backgroundImage: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg)`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            backgroundAttachment: 'fixed'
+            background: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg) no-repeat`,
+            backgroundSize: '100% 270%'
           }}>
           <Row type='flex' align='middle' style={style.row}>
             <img src={data.icon} alt='icon' style={style.image.icon} />
