@@ -154,6 +154,9 @@ class HeroDetail extends Component {
         bronze: {
           backgroundColor: '#CD7F32'
         }
+      },
+      header: {
+        overflowX: 'auto'
       }
     }
     if (value) {
@@ -164,7 +167,7 @@ class HeroDetail extends Component {
             bordered={ false }
             title={
               <Row>
-                <Col span={24}>
+                <Col span={24} style={style.header}>
                   <h3>
                     <Avatar
                       style={style.avatar}

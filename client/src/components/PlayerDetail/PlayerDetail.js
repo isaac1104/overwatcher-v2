@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PlayerDetailCard from './PlayerDetailCard';
 import { Row, Spin } from 'antd';
 import { connect } from 'react-redux';
@@ -54,9 +54,9 @@ class PlayerDetail extends Component {
 
   render() {
     return (
-      <div className='container-fluid'>
+      <Fragment>
         {this.renderPlayerDetail()}
-      </div>
+      </Fragment>
     );
   }
 }
