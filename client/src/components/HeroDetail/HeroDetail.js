@@ -140,6 +140,9 @@ class HeroDetail extends Component {
         borderRadius: '50%',
         marginRight: '10px'
       },
+      background: {
+        backgroundColor: '#f0f2f5'
+      },
       medals: {
         gold: {
           backgroundColor: 'gold',
@@ -157,12 +160,12 @@ class HeroDetail extends Component {
       return (
         <Fragment>
           <Card
-            style={{ backgroundColor: '#f0f2f5' }}
+            style={style.background}
             bordered={ false }
             title={
               <Row>
-                <Col sm={8}>
-                  <h3 className='text-capitalize'>
+                <Col span={24}>
+                  <h3>
                     <Avatar
                       style={style.avatar}
                       icon='user'
@@ -170,33 +173,29 @@ class HeroDetail extends Component {
                       src={`/images/heroes/${data.name}.png`}
                     />
                     {data.name}
+                    <Divider type='vertical' />
+                    {value.game.gamesWon || 0} Wins
+                    <Divider type='vertical' />
+                    <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
+                      style={style.medals.gold}
+                      showZero
+                      overflowCount={999}
+                    />
+                    <Divider type='vertical' />
+                    <Badge
+                      count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
+                      style={style.medals.silver}
+                      showZero
+                      overflowCount={999}
+                    />
+                    <Divider type='vertical' />
+                    <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
+                      style={style.medals.bronze}
+                      showZero
+                      overflowCount={999}
+                    />
                   </h3>
-                </Col>
-                <Col sm={16} style={{ marginTop: '2.4rem' }}>
-                  <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
-                    <h6 className='lead'>{value.game.gamesWon || 0} Wins</h6>
-                    <h6>
-                      Medals
-                      <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
-                        style={style.medals.gold}
-                        showZero
-                        overflowCount={999}
-                      />
-                      <Divider type='vertical' />
-                      <Badge
-                        count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
-                        style={style.medals.silver}
-                        showZero
-                        overflowCount={999}
-                      />
-                      <Divider type='vertical' />
-                      <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
-                        style={style.medals.bronze}
-                        showZero
-                        overflowCount={999}
-                      />
-                    </h6>
-                  </div>
+
                 </Col>
               </Row>
             }
