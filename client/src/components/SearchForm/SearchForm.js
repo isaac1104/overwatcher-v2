@@ -27,10 +27,10 @@ class Form extends Component {
     return (
       <form onSubmit={handleSubmit(this.formSubmit)} style={style.form}>
         <Field
-          name="battletag"
+          name='battletag'
           component={FormField}
         />
-        <Button type="default" shape="circle" icon="search" size='large' htmlType='submit' style={style.button} />
+        <Button type='default' shape='circle' icon='search' size='large' htmlType='submit' style={style.button} />
       </form>
     );
   }
