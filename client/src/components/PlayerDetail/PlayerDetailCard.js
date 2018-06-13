@@ -13,7 +13,12 @@ class PlayerDetailCard extends Component {
         color: '#fff'
       },
       image: {
-        width: '50px'
+        icon: {
+          marginRight: '10px'
+        },
+        rating: {
+          width: '50px'
+        }
       },
       row: {
         padding: '10px'
@@ -38,17 +43,13 @@ class PlayerDetailCard extends Component {
             backgroundPosition: 'center center',
             backgroundAttachment: 'fixed'
           }}>
-          <Row type='flex' style={style.row}>
-            {/* <Col xs={{ span: 2 }} sm={{ span: 2 }} md={{ span: 2 }} lg={2} xl={2}>
-              <img src={data.icon} alt='icon' />
-            </Col> */}
-            <Col xs={{ span: 12, offset: 10 }} sm={{ span: 12, offset: 10 }} md={{ span: 18, offset: 4 }} lg={22} xl={22}>
-              <h1 style={style.text}>{data.name}</h1>
-              <h3 style={style.text}>
-                <img src={data.ratingIcon} alt='icon' style={style.image} />
-                {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
-              </h3>
-            </Col>
+          <Row type='flex' align='middle' style={style.row}>
+            <img src={data.icon} alt='icon' style={style.image.icon} />
+            <h1 style={style.text}>{data.name}</h1>
+            <h3 style={style.text}>
+              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
+              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
+            </h3>
           </Row>
         </div>
       );
