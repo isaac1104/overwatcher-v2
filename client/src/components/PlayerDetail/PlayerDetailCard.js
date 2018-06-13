@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
-import { Avatar, Card, Divider, Icon } from 'antd';
+import { Avatar, Card, Divider, Icon, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
@@ -28,7 +28,6 @@ class PlayerDetailCard extends Component {
       }).name;
       return (
         <div
-          className='row'
           style={{
             backgroundImage: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg)`,
             backgroundRepeat: 'no-repeat',
@@ -36,16 +35,18 @@ class PlayerDetailCard extends Component {
             backgroundPosition: 'center center',
             backgroundAttachment: 'fixed'
           }}>
-          <div className='col-md-1 mt-3'>
-            <img src={data.icon} className='img-fluid' alt='icon' />
-          </div>
-          <div className='col-md-11'>
-            <h1 className='display-4 text-uppercase' style={style.text}>{data.name}</h1>
-            <h3 className='lead' style={style.text}>
-              <img src={data.ratingIcon} className='img-fluid' alt='icon' style={style.image} />
-              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
-            </h3>
-          </div>
+          <Row>
+            <Col sm={2} className='mt-3'>
+              <img src={data.icon} className='img-fluid' alt='icon' />
+            </Col>
+            <Col sm={22}>
+              <h1 className='display-4 text-uppercase' style={style.text}>{data.name}</h1>
+              <h3 className='lead' style={style.text}>
+                <img src={data.ratingIcon} className='img-fluid' alt='icon' style={style.image} />
+                {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
+              </h3>
+            </Col>
+          </Row>
         </div>
       );
     } else {
@@ -92,12 +93,12 @@ class PlayerDetailCard extends Component {
       }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
         return (
-          <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
+          <Col sm={4} key={hero.name} onClick={() => fetchHeroData(hero)}>
             <div style={style.cursor}>
               <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
               <p className='lead text-capitalize detail-text'>{hero.name}</p>
             </div>
-          </div>
+          </Col>
         );
       });
     } else {
@@ -121,53 +122,65 @@ class PlayerDetailCard extends Component {
       return (
       <Fragment>
         {this.renderMainHero()}
-        <div className='row'>
-          <Card bordered={ false } className='col-md-6' style={style.playerBackground}>
-            {data.competitiveStats ? (
-              <Fragment>
-                <div className='row text-center'>
-                  <Card className='col-md-3' title='Games Won' bordered={ false }>
-                    <h6 className='lead detail-text'>{data.gamesWon}</h6>
+        <Row className='row'>
+          <Col sm={12}>
+            <Card bordered={ false } style={style.playerBackground}>
+              {data.competitiveStats ? (
+                <Fragment>
+                  <Row className='text-center'>
+                    <Col sm={6}>
+                      <Card title='Games Won' bordered={ false }>
+                        <h6 className='lead detail-text'>{data.gamesWon}</h6>
+                      </Card>
+                    </Col>
+                    <Col sm={6}>
+                      <Card title='Win Rate' bordered={ false }>
+                        <h6 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
+                      </Card>
+                    </Col>
+                    <Col sm={6}>
+                      <Card title='K/D Ratio' bordered={ false }>
+                        <h6 className='lead detail-text'>
+                          {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
+                        </h6>
+                      </Card>
+                    </Col>
+                    <Col sm={6}>
+                      <Card title='Time Played' bordered={ false }>
+                        <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
+                      </Card>
+                    </Col>
+                  </Row>
+                  <Card
+                    title={<p><Icon type='user' /> Most Played Heroes</p>}
+                    bordered={ false }
+                    className='text-center'
+                  >
+                    <div className='d-flex align-items-center' style={style.mostPlayed}>
+                      {this.renderMostPlayedHeroes()}
+                    </div>
                   </Card>
-                  <Card className='col-md-3' title='Win Rate' bordered={ false }>
-                    <h6 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h6>
+                  <Card
+                    title={<p><Icon type='usergroup-add' /> All Played Heroes</p>}
+                    bordered= { false }
+                    className='text-center'
+                  >
+                    <div className='row'>
+                      {this.renderAllPlayedHeroes()}
+                    </div>
                   </Card>
-                  <Card className='col-md-3' title='K/D Ratio' bordered={ false }>
-                    <h6 className='lead detail-text'>
-                      {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
-                    </h6>
-                  </Card>
-                  <Card className='col-md-3' title='Time Played' bordered={ false }>
-                    <h6 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h6>
-                  </Card>
-                </div>
-                <Card
-                  title={<p><Icon type='user' /> Most Played Heroes</p>}
-                  bordered={ false }
-                  className='text-center'
-                >
-                  <div className='d-flex align-items-center' style={style.mostPlayed}>
-                    {this.renderMostPlayedHeroes()}
-                  </div>
-                </Card>
-                <Card
-                  title={<p><Icon type='usergroup-add' /> All Played Heroes</p>} 
-                  bordered= { false }
-                  className='text-center'
-                >
-                  <div className='row'>
-                    {this.renderAllPlayedHeroes()}
-                  </div>
-                </Card>
-              </Fragment>
-            ) : (
-              <div />
-            )}
-          </Card>
-          <Card bordered={ false } className='col-md-6 text-center' style={style.heroBackground}>
-            <HeroDetail />
-          </Card>
-        </div>
+                </Fragment>
+              ) : (
+                <div />
+              )}
+            </Card>
+          </Col>
+          <Col sm={12}>
+            <Card bordered={ false } className='text-center' style={style.heroBackground}>
+              <HeroDetail />
+            </Card>
+          </Col>
+        </Row>
       </Fragment>
     );
   }

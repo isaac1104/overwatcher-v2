@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { resetHeroData } from '../../actions';
-import { Avatar, Badge, Card, Divider, Table } from 'antd';
+import { Avatar, Badge, Card, Divider, Table, Row, Col } from 'antd';
 
 class HeroDetail extends Component {
   componentWillUnmount() {
@@ -160,8 +160,8 @@ class HeroDetail extends Component {
             style={{ backgroundColor: '#f0f2f5' }}
             bordered={ false }
             title={
-              <div className='row'>
-                <div className='col-md-4'>
+              <Row>
+                <Col sm={8}>
                   <h3 className='text-capitalize'>
                     <Avatar
                       style={style.avatar}
@@ -171,8 +171,8 @@ class HeroDetail extends Component {
                     />
                     {data.name}
                   </h3>
-                </div>
-                <div className='col-md-8' style={{ marginTop: '2.4rem' }}>
+                </Col>
+                <Col sm={16} style={{ marginTop: '2.4rem' }}>
                   <div className='d-flex align-items-center' style={{ justifyContent: 'space-evenly' }}>
                     <h6 className='lead'>{value.game.gamesWon || 0} Wins</h6>
                     <h6>
@@ -197,8 +197,8 @@ class HeroDetail extends Component {
                       />
                     </h6>
                   </div>
-                </div>
-              </div>
+                </Col>
+              </Row>
             }
           >
             {this.renderStatsTable()}

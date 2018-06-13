@@ -6,10 +6,6 @@ body {
   font-family: sans-serif;
 }
 
-.container-fluid {
-  width: 90% !important;
-}
-
 .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
   background: transparent !important;
 }
@@ -26,7 +22,7 @@ body {
   background: transparent !important;
 }
 
-.ant-card .col-md-3 {
+.ant-col-sm-6 .ant-card {
   background: transparent !important;
 }
 
