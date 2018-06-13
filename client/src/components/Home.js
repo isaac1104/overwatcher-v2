@@ -1,8 +1,12 @@
 import React from 'react';
+import { Row } from 'antd';
 
 const Home = () => {
   const style = {
     container: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       textAlign: 'center',
       height: '90vh'
     },
@@ -25,9 +29,11 @@ const Home = () => {
 
   return (
     <div style={style.container}>
-      <h1 style={style.font.h1}>Welcome to Overwatcher V2</h1>
-      <h2 style={style.font.h2}>Begin by searching for a valid battletag* including all numbers</h2>
-      <h3 style={style.font.h3}>*replace # with-</h3>
+      <div>
+        <h1 style={style.font.h1}>Welcome to Overwatcher V2</h1>
+        <h2 style={style.font.h2}>Begin by searching for a valid battletag* including all numbers</h2>
+        <h3 style={style.font.h3}>*replace # with-</h3>
+      </div>
     </div>
   );
 }

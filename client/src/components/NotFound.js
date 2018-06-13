@@ -3,6 +3,9 @@ import React from 'react';
 const NotFound = () => {
   const style = {
     container: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       textAlign: 'center',
       height: '90vh'
     },
@@ -21,8 +24,10 @@ const NotFound = () => {
 
   return (
     <div style={style.container}>
-      <h1 style={style.font.h1}>The requested player was not found!</h1>
-      <h2 style={style.font.h2}>Please check the battletag and try again</h2>
+      <div>
+        <h1 style={style.font.h1}>The requested player was not found!</h1>
+        <h2 style={style.font.h2}>Please check the battletag and try again</h2>
+      </div>
     </div>
   );
 }
