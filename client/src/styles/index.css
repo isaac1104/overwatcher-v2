@@ -10,6 +10,14 @@ body {
   width: 90% !important;
 }
 
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background: transparent !important;
+}
+
+.ant-layout-header {
+  padding: 0 5px !important;
+}
+
 .ant-card-head {
   background: transparent !important;
 }
