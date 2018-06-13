@@ -14,7 +14,7 @@ class Form extends Component {
     const { handleSubmit } = this.props;
     const style = {
       form: {
-        display: 'flex',
+        float: 'right',
         marginTop: '12px'
       },
       button: {
