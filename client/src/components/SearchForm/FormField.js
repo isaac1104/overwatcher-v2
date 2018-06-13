@@ -1,20 +1,15 @@
-import React from "react";
+import { createComponent, customMap } from 'redux-form-antd';
+import { Input } from 'antd';
+const Search = Input.Search;
 
-const FormField = field => {
-  const { meta: { touched, error } } = field;
-  const className = `form-control ${touched && error ? "is-invalid" : ""}`;
-  return (
-    <div className="form-group">
-      <label className="bmd-label-floating">{field.label}</label>
-      <input
-        className={className}
-        type="input"
-        {...field.input}
-        autoComplete="off"
-        placeholder={touched ? error : ""}
-      />
-    </div>
-  );
+function mapFunction(mapProps, { input: { onChange } } ) {
+  return {
+    ...mapProps,
+    onChange: event => onChange(event.nativeEvent.target.value),
+  };
 }
+const textFieldMap = customMap(mapFunction);
+
+const FormField = createComponent(Search, textFieldMap);
 
 export default FormField;
