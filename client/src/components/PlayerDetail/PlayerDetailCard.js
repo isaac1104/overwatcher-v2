@@ -69,7 +69,7 @@ class PlayerDetailCard extends Component {
       return top3Heroes.map(hero => {
         return (
           <div onClick={() => fetchHeroData(hero)} key={hero.name} style={style.cursor}>
-            <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
+            <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
             <h6 className='lead text-capitalize detail-text'>{hero.name}</h6>
           </div>
         );
@@ -94,7 +94,7 @@ class PlayerDetailCard extends Component {
         return (
           <div className='col-md-2' key={hero.name} onClick={() => fetchHeroData(hero)}>
             <div style={style.cursor}>
-              <Avatar icon='user' size='large' src={`/images/heroes/${hero.name}.png`}/>
+              <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
               <p className='lead text-capitalize detail-text'>{hero.name}</p>
             </div>
           </div>
