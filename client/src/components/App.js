@@ -11,16 +11,10 @@ import NotFound from './NotFound';
 
 class App extends Component {
   render() {
-    const style = {
-      layout: {
-        overflowX: 'hidden'
-      }
-    }
-
     return (
       <BrowserRouter>
         <ScrollToTop>
-          <Layout style={style.layout}>
+          <Layout>
             <Navbar/>
             <ContentLayout>
               <Switch>
