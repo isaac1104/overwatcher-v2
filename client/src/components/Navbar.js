@@ -11,8 +11,8 @@ class Navbar extends Component {
         lineHeight: '64px'
       },
       logo: {
-        width: 25,
-        height: 25
+        width: 35,
+        height: 35
       },
       div: {
         marginBottom: '10px'
