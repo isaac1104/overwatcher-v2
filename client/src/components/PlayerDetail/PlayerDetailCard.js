@@ -93,7 +93,7 @@ class PlayerDetailCard extends Component {
       }
     }
     if (data.stats) {
-      const allHeroes = data.stats.top_heroes.competitive.played;
+      const allHeroes = data.stats.top_heroes.competitive.games_won;
       return allHeroes.map(hero => {
         return (
           <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.hero}>
