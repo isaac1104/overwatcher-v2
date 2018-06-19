@@ -18,6 +18,7 @@ class Sidebar extends Component {
         collapsedWidth="0"
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
+        width={160}
         style={{ minHeight: '80vh' }}
       >
         <div className="logo" />
