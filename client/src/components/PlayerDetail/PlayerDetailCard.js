@@ -54,6 +54,7 @@ class PlayerDetailCard extends Component {
 
   renderMostPlayedHeroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
+    console.log(data);
     const style = {
       cursor: {
         cursor: 'pointer'
@@ -67,18 +68,16 @@ class PlayerDetailCard extends Component {
         color: '#fff'
       }
     }
-    if (data.competitiveStats && data.competitiveStats.careerStats) {
-      const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
-        return { name: key, value }
-      }).filter(hero => hero.name !== 'allHeroes').sort((a,b) => {
-        return b.value.game.gamesWon - a.value.game.gamesWon;
+    if (data.stats) {
+      const top3Heroes = data.stats.top_heroes.competitive.games_won.sort((a,b) => {
+        return Number(b.games_won) - Number(a.games_won);
       }).splice(0, 3);
       return top3Heroes.map(hero => {
         return (
-          <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.name}>
+          <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.hero}>
             <div onClick={() => fetchHeroData(hero)} style={style.cursor}>
-              <Avatar size='large' src={`/images/heroes/${hero.name}.png`} style={style.avatar} />
-              <h4 className='detail-text'>{hero.name}</h4>
+              <Avatar size='large' src={hero.img} style={style.avatar} />
+              <h4 className='detail-text'>{hero.hero}</h4>
             </div>
           </Col>
         );
@@ -136,9 +135,9 @@ class PlayerDetailCard extends Component {
         <Row className='row'>
           <Col xs={24} sm={24} md={24} lg={12} xl={12} style={style.playerBackground}>
             <Card bordered={ false } style={style.playerBackground}>
-              {data.competitiveStats ? (
+              {data.stats ? (
                 <Fragment>
-                  <Row>
+                  {/* <Row>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Games Won' bordered={ false }>
                         <h3 className='lead detail-text'>{data.gamesWon}</h3>
@@ -171,7 +170,7 @@ class PlayerDetailCard extends Component {
                         </h3>
                       </Card>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Card
                     title={<p><Icon type='user' /> Most Played Heroes</p>}
                     bordered={ false }
