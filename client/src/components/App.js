@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import ContentLayout from './Layout/ContentLayout';
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import FooterNav from './FooterNav';
 import Home from './Home';
 import PlayerDetail from './PlayerDetail/PlayerDetail';
@@ -16,13 +17,16 @@ class App extends Component {
         <ScrollToTop>
           <Layout>
             <Navbar/>
-            <ContentLayout>
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/player/notfound' component={NotFound} />
-                <Route exact path='/player/stats/:id' component={PlayerDetail} />
-              </Switch>
-            </ContentLayout>
+            <Layout>
+              <Sidebar />
+              <ContentLayout>
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/player/notfound' component={NotFound} />
+                  <Route exact path='/player/stats/:id' component={PlayerDetail} />
+                </Switch>
+              </ContentLayout>
+            </Layout>
             <FooterNav />
           </Layout>
         </ScrollToTop>
