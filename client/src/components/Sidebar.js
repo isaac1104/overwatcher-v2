@@ -5,7 +5,7 @@ const { Sider } = Layout;
 
 class Sidebar extends Component {
   state = {
-    collapsed: false
+    collapsed: true
   };
 
   onCollapse = collapsed => {
