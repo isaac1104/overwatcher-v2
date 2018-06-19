@@ -161,72 +161,85 @@ class HeroDetail extends Component {
     }
     if (value) {
       return (
-        <Fragment>
-          <Card
-            style={style.background}
-            bordered={ false }
-            title={
-              <Row>
-                <Col span={24} style={style.header}>
-                  <h3>
-                    <Avatar
-                      style={style.avatar}
-                      icon='user'
-                      size='large'
-                      src={`/images/heroes/${data.name}.png`}
-                    />
-                    {data.name}
-                    <Divider type='vertical' />
-                    {value.game.gamesWon || 0} Wins
-                    <Divider type='vertical' />
-                    <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
-                      style={style.medals.gold}
-                      showZero
-                      overflowCount={999}
-                    />
-                    <Divider type='vertical' />
-                    <Badge
-                      count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
-                      style={style.medals.silver}
-                      showZero
-                      overflowCount={999}
-                    />
-                    <Divider type='vertical' />
-                    <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
-                      style={style.medals.bronze}
-                      showZero
-                      overflowCount={999}
-                    />
-                  </h3>
-                </Col>
-              </Row>
-            }
-          >
-            {this.renderStatsTable()}
-          </Card>
-        </Fragment>
+        <Card
+          style={style.background}
+          bordered={ false }
+          title={
+            <Row>
+              <Col span={24} style={style.header}>
+                <h3>
+                  <Avatar
+                    style={style.avatar}
+                    icon='user'
+                    size='large'
+                    src={`/images/heroes/${data.name}.png`}
+                  />
+                  {data.name}
+                  <Divider type='vertical' />
+                  {value.game.gamesWon || 0} Wins
+                  <Divider type='vertical' />
+                  <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
+                    style={style.medals.gold}
+                    showZero
+                    overflowCount={999}
+                  />
+                  <Divider type='vertical' />
+                  <Badge
+                    count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
+                    style={style.medals.silver}
+                    showZero
+                    overflowCount={999}
+                  />
+                  <Divider type='vertical' />
+                  <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
+                    style={style.medals.bronze}
+                    showZero
+                    overflowCount={999}
+                  />
+                </h3>
+              </Col>
+            </Row>
+          }
+        >
+          {this.renderStatsTable()}
+        </Card>
       );
     }
   }
 
+  renderData() {
+    const { data } = this.props.playerData;
+    if (!data.competitiveStats) {
+      return (
+        <Fragment>
+          <h1>Competitive Stats Are Not Available For This Player!</h1>
+          <h6>At least one competitive game has to be played</h6>
+        </Fragment>
+      );
+    }
+    if (data.competitiveStats && !data.competitiveStats.careerStats) {
+      return <h1>Error Has Occured. Please Try Again Later</h1>
+    }
+    if (_.isEmpty(this.props.heroData.data)) {
+      return <h1>Click a Hero Portarit To Display Hero Data</h1>
+    } else {
+      return this.renderHeroStats();
+    }
+  }
+
   render() {
-    const { data } = this.props.heroData;
     return (
-      <div>
-        {_.isEmpty(data) ? (
-            <h1>Click a hero portrait to display hero data</h1>
-          ) : (
-            this.renderHeroStats()
-          )
-        }
-      </div>
+      <Fragment>
+        {this.renderData()}
+      </Fragment>
     );
   }
 }
 
-function mapStateToProps({ heroData }) {
+function mapStateToProps({ heroData, playerData }) {
   return {
-    heroData
+    heroData,
+    playerData
   }
 }
 
