@@ -8,7 +8,6 @@ import { fetchHeroData } from '../../actions';
 class PlayerDetailCard extends Component {
   renderMainHero() {
     const { data } = this.props.playerData;
-    console.log(data);
     const style = {
       text: {
         color: '#fff'
