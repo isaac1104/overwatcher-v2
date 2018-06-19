@@ -219,6 +219,7 @@ class PlayerDetailCard extends Component {
   }
 
   render() {
+    console.log(this.props.playerData.data);
     return (
       <Fragment>
         {this.renderDetail()}
