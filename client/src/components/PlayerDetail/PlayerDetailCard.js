@@ -8,6 +8,7 @@ import { fetchHeroData } from '../../actions';
 class PlayerDetailCard extends Component {
   renderMainHero() {
     const { data } = this.props.playerData;
+    console.log(data);
     const style = {
       text: {
         color: '#fff'
@@ -24,7 +25,7 @@ class PlayerDetailCard extends Component {
         padding: '10px'
       }
     }
-    if (data.competitiveStats) {
+    if (data.competitiveStats && data.competitiveStats.topHeroes) {
       const mainHero = _.map(data.competitiveStats.topHeroes, (value, key) => {
         return { name: key, gamesWon: value.gamesWon }
       }).reduce((acc,curr) => {
@@ -51,7 +52,18 @@ class PlayerDetailCard extends Component {
         </div>
       );
     } else {
-      return <div />
+      return (
+        <div style={{ backgroundColor: '#000' }}>
+          <Row type='flex' align='middle' style={style.row}>
+            <img src={data.icon} alt='icon' style={style.image.icon} />
+            <h1 style={style.text}>{data.name}</h1>
+            <h3 style={style.text}>
+              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
+              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
+            </h3>
+          </Row>
+        </div>
+      );
     }
   }
 
@@ -65,9 +77,12 @@ class PlayerDetailCard extends Component {
         width: '60px',
         height: '60px',
         borderRadius: '50%'
+      },
+      text: {
+        color: '#fff'
       }
     }
-    if (data.competitiveStats) {
+    if (data.competitiveStats && data.competitiveStats.careerStats) {
       const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
         return { name: key, value }
       }).filter(hero => hero.name !== 'allHeroes').sort((a,b) => {
@@ -84,7 +99,7 @@ class PlayerDetailCard extends Component {
         );
       });
     } else {
-      return <div />
+      return <h1 style={style.text}>N/A</h1>
     }
   }
 
@@ -93,9 +108,12 @@ class PlayerDetailCard extends Component {
     const style = {
       cursor: {
         cursor: 'pointer'
+      },
+      text: {
+        color: '#fff'
       }
     }
-    if (data.competitiveStats) {
+    if (data.competitiveStats && data.competitiveStats.careerStats) {
       const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
         return { name: key, value }
       }).filter(hero => hero.name !== 'allHeroes');
@@ -110,7 +128,7 @@ class PlayerDetailCard extends Component {
         );
       });
     } else {
-      return <div />
+      return <h1 style={style.text}>N/A</h1>
     }
   }
 
@@ -149,13 +167,23 @@ class PlayerDetailCard extends Component {
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='K/D Ratio' bordered={ false }>
                         <h3 className='lead detail-text'>
-                          {(data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)}
+                          {
+                            data.competitiveStats.careerStats
+                            ? (data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)
+                            : 'N/A'
+                          }
                         </h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Time Played' bordered={ false }>
-                        <h3 className='lead detail-text'>{data.competitiveStats.careerStats.allHeroes.game.timePlayed}</h3>
+                        <h3 className='lead detail-text'>
+                          {
+                            data.competitiveStats.careerStats
+                          ? data.competitiveStats.careerStats.allHeroes.game.timePlayed
+                          : 'N/A'
+                        }
+                        </h3>
                       </Card>
                     </Col>
                   </Row>
