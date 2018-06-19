@@ -26,7 +26,7 @@ class PlayerDetail extends Component {
     const { error, isFetching } = this.props.playerData;
     const style = {
       container: {
-        height: '80vh'
+        minHeight: '80vh'
       },
       loading: {
         width: '250px',
