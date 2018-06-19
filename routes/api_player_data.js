@@ -7,3 +7,5 @@ module.exports = app => {
     res.send(data);
   });
 }
+
+// https://ow-api.com/v1/stats/pc/us/sinatraa-11809/complete
