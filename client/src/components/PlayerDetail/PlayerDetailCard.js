@@ -15,9 +15,6 @@ class PlayerDetailCard extends Component {
       image: {
         icon: {
           marginRight: '10px'
-        },
-        rating: {
-          width: '50px'
         }
       },
       row: {
@@ -54,7 +51,6 @@ class PlayerDetailCard extends Component {
 
   renderMostPlayedHeroes() {
     const { playerData: { data }, fetchHeroData } = this.props;
-    console.log(data);
     const style = {
       cursor: {
         cursor: 'pointer'
@@ -97,16 +93,14 @@ class PlayerDetailCard extends Component {
         color: '#fff'
       }
     }
-    if (data.competitiveStats && data.competitiveStats.careerStats) {
-      const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
-        return { name: key, value }
-      }).filter(hero => hero.name !== 'allHeroes');
+    if (data.stats) {
+      const allHeroes = data.stats.top_heroes.competitive.played;
       return allHeroes.map(hero => {
         return (
-          <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.name}>
+          <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.hero}>
             <div style={style.cursor} onClick={() => fetchHeroData(hero)}>
-              <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
-              <p className='detail-text'>{hero.name}</p>
+              <Avatar size='large' src={hero.img}/>
+              <p className='detail-text'>{hero.hero}</p>
             </div>
           </Col>
         );
