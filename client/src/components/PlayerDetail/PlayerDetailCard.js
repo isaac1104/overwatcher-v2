@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
 import { Avatar, Card, Divider, Icon, Row, Col } from 'antd';
@@ -131,40 +130,32 @@ class PlayerDetailCard extends Component {
             <Card bordered={ false } style={style.playerBackground}>
               {data.stats ? (
                 <Fragment>
-                  {/* <Row>
+                  <Row>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Games Won' bordered={ false }>
-                        <h3 className='lead detail-text'>{data.gamesWon}</h3>
+                        <h3 className='lead detail-text'>{data.stats.game.competitive[1].value}</h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Win Rate' bordered={ false }>
-                        <h3 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h3>
+                        <h3 className='lead detail-text'>{Math.round((data.stats.game.competitive[2].value / data.stats.game.competitive[1].value) * 100)}%</h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='K/D Ratio' bordered={ false }>
                         <h3 className='lead detail-text'>
-                          {
-                            data.competitiveStats.careerStats
-                            ? (data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)
-                            : 'N/A'
-                          }
+                          {(parseInt(data.stats.combat.competitive[9].value, 10) / parseInt(data.stats.combat.competitive[2].value, 10)).toFixed(2)}
                         </h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Time Played' bordered={ false }>
                         <h3 className='lead detail-text'>
-                          {
-                            data.competitiveStats.careerStats
-                          ? data.competitiveStats.careerStats.allHeroes.game.timePlayed
-                          : 'N/A'
-                        }
+                          {data.stats.game.competitive[0].value}
                         </h3>
                       </Card>
                     </Col>
-                  </Row> */}
+                  </Row>
                   <Card
                     title={<p><Icon type='user' /> Most Played Heroes</p>}
                     bordered={ false }
