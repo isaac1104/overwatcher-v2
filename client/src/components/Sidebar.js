@@ -19,7 +19,7 @@ class Sidebar extends Component {
             collapsedWidth="0"
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
-            style={{ background: '#fff', minHeight: '100vh' }}
+            style={{ background: '#fff', minHeight: '80vh' }}
           >
             <div className="logo" />
             <Menu mode="inline">
