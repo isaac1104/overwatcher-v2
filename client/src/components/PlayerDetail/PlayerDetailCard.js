@@ -24,45 +24,31 @@ class PlayerDetailCard extends Component {
         padding: '10px'
       }
     }
-    if (data.competitiveStats && data.competitiveStats.topHeroes) {
-      const mainHero = _.map(data.competitiveStats.topHeroes, (value, key) => {
-        return { name: key, gamesWon: value.gamesWon }
-      }).reduce((acc,curr) => {
-        if (acc.gamesWon > curr.gamesWon) {
+    if (data.stats) {
+      const mainHero = data.stats.top_heroes.competitive.games_won.reduce((acc,curr) => {
+        if (Number(acc.games_won) > Number(curr.games_won)) {
           return acc;
         } else {
           return curr;
         }
-      }).name;
+      }).hero.toLowerCase();
       return (
         <div
           style={{
             background: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg) no-repeat`,
             backgroundSize: '100% 270%'
-          }}>
+          }}
+          >
           <Row type='flex' align='middle' style={style.row}>
-            <img src={data.icon} alt='icon' style={style.image.icon} />
-            <h1 style={style.text}>{data.name}</h1>
-            <h3 style={style.text}>
-              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
-              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
-            </h3>
+            <img src={data.portrait} alt='icon' style={style.image.icon} />
+            <h1 style={style.text}>{data.username}</h1>
+            <Divider type='vertical' />
+            <h3 style={style.text}>Lvl. {data.level}</h3>
           </Row>
         </div>
       );
     } else {
-      return (
-        <div style={{ backgroundColor: '#000' }}>
-          <Row type='flex' align='middle' style={style.row}>
-            <img src={data.icon} alt='icon' style={style.image.icon} />
-            <h1 style={style.text}>{data.name}</h1>
-            <h3 style={style.text}>
-              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
-              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
-            </h3>
-          </Row>
-        </div>
-      );
+      return <div />;
     }
   }
 
