@@ -18,10 +18,10 @@ class Sidebar extends Component {
         collapsedWidth="0"
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
-        style={{ background: '#fff', minHeight: '80vh' }}
+        style={{ minHeight: '80vh' }}
       >
         <div className="logo" />
-        <Menu mode="inline">
+        <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
           <Menu.Item key="1">
             <NavLink to="/dashboard">
               <Icon type="dashboard" />
