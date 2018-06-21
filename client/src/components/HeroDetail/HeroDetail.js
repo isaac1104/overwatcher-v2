@@ -10,125 +10,25 @@ class HeroDetail extends Component {
   }
 
   renderStatsTable() {
-    const { data: { value } } = this.props.heroData;
-    if (value) {
-      const columns1 = [{
-        title: 'K/D Ratio',
-        dataIndex: 'kd',
-        key: 'kd',
-        width: '20%'
-      }, {
-        title: 'Games Played',
-        dataIndex: 'gamesPlayed',
-        key: 'gamesPlayed',
-        width: '20%'
-      }, {
-        title: 'Win %',
-        dataIndex: 'winPercentage',
-        key: 'winPercentage',
-        width: '20%'
-      }, {
-        title: 'Weapon Accuracy',
-        dataIndex: 'weaponAccuracy',
-        key: 'weaponAccuracy',
-        width: '20%'
-      }, {
-        title: 'Damage Done',
-        dataIndex: 'damageDone',
-        key: 'damageDone',
-        width: '20%'
-      }];
+    const columns = this.props.playerData.data.stats.assists.competitive.map(data => {
+      return {
+        title: data.title,
+        dataIndex: data.title,
+        key: data.title
+      };
+    });
+    const dataSource = this.props.playerData.data.stats.assists.competitive.map(data => {
+      return {
+        key: data.title,
+        [data.title]: data.value
+      };
+    });
 
-      const columns2 = [{
-        title: 'Avg. Damage',
-        dataIndex: 'avgDamage',
-        key: 'avgDamage',
-        width: '20%'
-      }, {
-        title: 'Hero Damage',
-        dataIndex: 'heroDamage',
-        key: 'heroDamage',
-        width: '20%'
-      }, {
-        title: 'Obj. Time',
-        dataIndex: 'objTime',
-        key: 'objTime',
-        width: '20%'
-      }, {
-        title: 'Time On Fire',
-        dataIndex: 'timeOnFire',
-        key: 'timeOnFire',
-        width: '20%'
-      }, {
-        title: 'Multikills',
-        dataIndex: 'multikills',
-        key: 'multikills',
-        width: '20%'
-      }];
-
-      const columns3 = [{
-        title: 'Most Obj. Kills',
-        dataIndex: 'mostObjKills',
-        key: 'mostObjKills',
-        width: '20%'
-      }, {
-        title: 'Most Solo Kills',
-        dataIndex: 'mostSoloKills',
-        key: 'mostSoloKills',
-        width: '20%'
-      }, {
-        title: 'Most Kill Streaks',
-        dataIndex: 'mostKillStreaks',
-        key: 'mostKillStreaks',
-        width: '20%'
-      }, {
-        title: 'Most Critical Hits',
-        dataIndex: 'mostCriticalHits',
-        key: 'mostCriticalHits',
-        width: '20%'
-      }, {
-        title: 'Deaths',
-        dataIndex: 'deaths',
-        key: 'deaths',
-        width: '20%'
-
-      }];
-
-      const data1 = [{
-        key: '1',
-        kd: <p className='lead'>{value.average.eliminationsPerLife || 'N/A'}</p>,
-          gamesPlayed: <p className='lead'>{value.game.gamesPlayed || 'N/A'}</p>,
-          winPercentage: <p className='lead'>{value.game.winPercentage || 'N/A'}</p>,
-          weaponAccuracy: <p className='lead'>{value.combat.weaponAccuracy || 'N/A'}</p>,
-          damageDone: <p className='lead'>{value.combat.damageDone? value.combat.damageDone.toLocaleString() : 'N/A'}</p>
-        }];
-
-        const data2 = [{
-          key: '2',
-          avgDamage: <p className='lead'>{value.average.allDamageDone || 'N/A'}</p>,
-          heroDamage: <p className='lead'>{value.combat.heroDamageDone ? value.combat.heroDamageDone.toLocaleString() : 'N/A'}</p>,
-          objTime: <p className='lead'>{value.combat.objectiveTime || 'N/A'}</p>,
-          timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'N/A'}</p>,
-          multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
-      }];
-
-      const data3 = [{
-        key: '3',
-        mostObjKills: <p className='lead'>{value.best.objectiveKillsMostInGame || 'N/A'}</p>,
-        mostSoloKills: <p className='lead'>{value.best.soloKillsMostInGame || 'N/A'}</p>,
-        mostKillStreaks: <p className='lead'>{value.best.killsStreakBest || 'N/A'}</p>,
-        mostCriticalHits: <p className='lead'>{value.best.criticalHitsMostInGame || 'N/A'}</p>,
-        deaths: <p className='lead'>{value.deaths.deaths || 'N/A'}</p>
-    }];
-
-      return (
-        <Fragment>
-          <Table columns={columns1} dataSource={data1} pagination={false} />
-          <Table columns={columns2} dataSource={data2} pagination={false} />
-          <Table columns={columns3} dataSource={data3} pagination={false} />
-        </Fragment>
-      );
-    }
+    return (
+      <Fragment>
+        <Table columns={columns} dataSource={dataSource} pagination={false} />
+      </Fragment>
+    );
   }
 
   renderHeroStats() {
@@ -177,20 +77,20 @@ class HeroDetail extends Component {
                 <Divider type='vertical' />
                 {data.games_won || 0} Wins
                 {/* <Divider type='vertical' />
-                <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
+                  <Badge count={value.matchAwards.medalsGold ? value.matchAwards.medalsGold : 0}
                   style={style.medals.gold}
                   showZero
                   overflowCount={999}
-                />
-                <Divider type='vertical' />
-                <Badge
+                  />
+                  <Divider type='vertical' />
+                  <Badge
                   count={value.matchAwards.medalsSilver ? value.matchAwards.medalsSilver : 0}
                   style={style.medals.silver}
                   showZero
                   overflowCount={999}
-                />
-                <Divider type='vertical' />
-                <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
+                  />
+                  <Divider type='vertical' />
+                  <Badge count={value.matchAwards.medalsBronze ? value.matchAwards.medalsBronze : 0}
                   style={style.medals.bronze}
                   showZero
                   overflowCount={999}
@@ -200,7 +100,7 @@ class HeroDetail extends Component {
           </Row>
         }
       >
-        {/* {this.renderStatsTable()} */}
+        {this.renderStatsTable()}
       </Card>
     );
   }
@@ -219,7 +119,6 @@ class HeroDetail extends Component {
   }
 
   render() {
-    console.log(this.props.heroData.data);
     return (
       <Fragment>
         {this.renderData()}
