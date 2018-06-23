@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
 import { Avatar, Card, Divider, Icon, Row, Col } from 'antd';
@@ -14,37 +15,54 @@ class PlayerDetailCard extends Component {
       image: {
         icon: {
           marginRight: '10px'
+        },
+        rating: {
+          width: '50px'
         }
       },
       row: {
         padding: '10px'
       }
     }
-    if (data.stats) {
-      const mainHero = data.stats.top_heroes.competitive.games_won.reduce((acc,curr) => {
-        if (Number(acc.games_won) > Number(curr.games_won)) {
+    if (data.competitiveStats && data.competitiveStats.topHeroes) {
+      const mainHero = _.map(data.competitiveStats.topHeroes, (value, key) => {
+        return { name: key, gamesWon: value.gamesWon }
+      }).reduce((acc,curr) => {
+        if (acc.gamesWon > curr.gamesWon) {
           return acc;
         } else {
           return curr;
         }
-      }).hero.toLowerCase();
+      }).name;
       return (
         <div
           style={{
             background: `url(https://d1u1mce87gyfbn.cloudfront.net/hero/${mainHero}/background-story.jpg) no-repeat`,
             backgroundSize: '100% 270%'
-          }}
-          >
+          }}>
           <Row type='flex' align='middle' style={style.row}>
-            <img src={data.portrait} alt='icon' style={style.image.icon} />
-            <h1 style={style.text}>{data.username}</h1>
-            <Divider type='vertical' />
-            <h3 style={style.text}>Lvl. {data.level}</h3>
+            <img src={data.icon} alt='icon' style={style.image.icon} />
+            <h1 style={style.text}>{data.name}</h1>
+            <h3 style={style.text}>
+              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
+              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
+            </h3>
           </Row>
         </div>
       );
     } else {
-      return <div />;
+      return (
+        <div style={{ backgroundColor: '#000' }}>
+          <Row type='flex' align='middle' style={style.row}>
+            <img src={data.icon} alt='icon' style={style.image.icon} />
+            <h1 style={style.text}>{data.name}</h1>
+            <h3 style={style.text}>
+              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
+              {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
+            </h3>
+          </Row>
+        </div>
+      );
     }
   }
 
@@ -63,16 +81,18 @@ class PlayerDetailCard extends Component {
         color: '#fff'
       }
     }
-    if (data.stats) {
-      const top3Heroes = data.stats.top_heroes.competitive.games_won.sort((a,b) => {
-        return Number(b.games_won) - Number(a.games_won);
+    if (data.competitiveStats && data.competitiveStats.careerStats) {
+      const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
+        return { name: key, value }
+      }).filter(hero => hero.name !== 'allHeroes').sort((a,b) => {
+        return b.value.game.gamesWon - a.value.game.gamesWon;
       }).splice(0, 3);
       return top3Heroes.map(hero => {
         return (
-          <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.hero}>
+          <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.name}>
             <div onClick={() => fetchHeroData(hero)} style={style.cursor}>
-              <Avatar size='large' src={hero.img} style={style.avatar} />
-              <h4 className='detail-text'>{hero.hero}</h4>
+              <Avatar size='large' src={`/images/heroes/${hero.name}.png`} style={style.avatar} />
+              <h4 className='detail-text'>{hero.name}</h4>
             </div>
           </Col>
         );
@@ -92,14 +112,16 @@ class PlayerDetailCard extends Component {
         color: '#fff'
       }
     }
-    if (data.stats) {
-      const allHeroes = data.stats.top_heroes.competitive.games_won;
+    if (data.competitiveStats && data.competitiveStats.careerStats) {
+      const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
+        return { name: key, value }
+      }).filter(hero => hero.name !== 'allHeroes');
       return allHeroes.map(hero => {
         return (
-          <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.hero}>
+          <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.name}>
             <div style={style.cursor} onClick={() => fetchHeroData(hero)}>
-              <Avatar size='large' src={hero.img}/>
-              <p className='detail-text'>{hero.hero}</p>
+              <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
+              <p className='detail-text'>{hero.name}</p>
             </div>
           </Col>
         );
@@ -128,30 +150,38 @@ class PlayerDetailCard extends Component {
         <Row className='row'>
           <Col xs={24} sm={24} md={24} lg={12} xl={12} style={style.playerBackground}>
             <Card bordered={ false } style={style.playerBackground}>
-              {data.stats ? (
+              {data.competitiveStats ? (
                 <Fragment>
                   <Row>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Games Won' bordered={ false }>
-                        <h3 className='lead detail-text'>{data.stats.game.competitive[1].value}</h3>
+                        <h3 className='lead detail-text'>{data.gamesWon}</h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Win Rate' bordered={ false }>
-                        <h3 className='lead detail-text'>{Math.round((data.stats.game.competitive[2].value / data.stats.game.competitive[1].value) * 100)}%</h3>
+                        <h3 className='lead detail-text'>{Math.round((data.competitiveStats.games.won / data.competitiveStats.games.played) * 100)}%</h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='K/D Ratio' bordered={ false }>
                         <h3 className='lead detail-text'>
-                          {(parseInt(data.stats.combat.competitive[9].value, 10) / parseInt(data.stats.combat.competitive[2].value, 10)).toFixed(2)}
+                          {
+                            data.competitiveStats.careerStats
+                            ? (data.competitiveStats.careerStats.allHeroes.combat.eliminations / data.competitiveStats.careerStats.allHeroes.combat.deaths).toFixed(2)
+                            : 'N/A'
+                          }
                         </h3>
                       </Card>
                     </Col>
                     <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                       <Card title='Time Played' bordered={ false }>
                         <h3 className='lead detail-text'>
-                          {data.stats.game.competitive[0].value}
+                          {
+                            data.competitiveStats.careerStats
+                          ? data.competitiveStats.careerStats.allHeroes.game.timePlayed
+                          : 'N/A'
+                        }
                         </h3>
                       </Card>
                     </Col>
@@ -189,7 +219,6 @@ class PlayerDetailCard extends Component {
   }
 
   render() {
-    console.log(this.props.playerData.data);
     return (
       <Fragment>
         {this.renderDetail()}
