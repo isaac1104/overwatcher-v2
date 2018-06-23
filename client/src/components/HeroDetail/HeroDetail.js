@@ -102,15 +102,15 @@ class HeroDetail extends Component {
           winPercentage: <p className='lead'>{value.game.winPercentage || 'N/A'}</p>,
           weaponAccuracy: <p className='lead'>{value.combat.weaponAccuracy || 'N/A'}</p>,
           damageDone: <p className='lead'>{value.combat.damageDone? value.combat.damageDone.toLocaleString() : 'N/A'}</p>
-        }];
+      }];
 
-        const data2 = [{
-          key: '2',
-          avgDamage: <p className='lead'>{value.average.allDamageDone || 'N/A'}</p>,
-          heroDamage: <p className='lead'>{value.combat.heroDamageDone ? value.combat.heroDamageDone.toLocaleString() : 'N/A'}</p>,
-          objTime: <p className='lead'>{value.combat.objectiveTime || 'N/A'}</p>,
-          timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'N/A'}</p>,
-          multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
+      const data2 = [{
+        key: '2',
+        avgDamage: <p className='lead'>{value.average.allDamageDone || 'N/A'}</p>,
+        heroDamage: <p className='lead'>{value.combat.heroDamageDone ? value.combat.heroDamageDone.toLocaleString() : 'N/A'}</p>,
+        objTime: <p className='lead'>{value.combat.objectiveTime || 'N/A'}</p>,
+        timeOnFire: <p className='lead'>{value.combat.timeSpentOnFire || 'N/A'}</p>,
+        multikills: <p className='lead'>{value.combat.multikills || 'N/A'}</p>
       }];
 
       const data3 = [{
@@ -120,7 +120,7 @@ class HeroDetail extends Component {
         mostKillStreaks: <p className='lead'>{value.best.killsStreakBest || 'N/A'}</p>,
         mostCriticalHits: <p className='lead'>{value.best.criticalHitsMostInGame || 'N/A'}</p>,
         deaths: <p className='lead'>{value.deaths.deaths || 'N/A'}</p>
-    }];
+      }];
 
       return (
         <Fragment>
