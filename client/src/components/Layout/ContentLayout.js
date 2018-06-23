@@ -4,12 +4,14 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 const style = {
   layout: {
-    padding: '0 24px'
+    padding: '0 24px',
+    alignItems: 'center'
   },
   content: {
     background: '#fff',
     padding: 24,
-    margin: 0
+    margin: 0,
+    width: '80%'
   }
 }
 
