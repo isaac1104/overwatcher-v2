@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
 import HeroDetail from '../HeroDetail/HeroDetail';
 import { Avatar, Card, Divider, Icon, Row, Col } from 'antd';
+import { FadeIn } from 'react-lazyload-fadein';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
@@ -91,8 +92,19 @@ class PlayerDetailCard extends Component {
         return (
           <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.name}>
             <div onClick={() => fetchHeroData(hero)} style={style.cursor}>
-              <Avatar size='large' src={`/images/heroes/${hero.name}.png`} style={style.avatar} />
-              <h4 className='detail-text'>{hero.name}</h4>
+              <FadeIn height={150}>
+                {onload => (
+                  <Fragment>
+                    <Avatar
+                      size='large'
+                      src={`/images/heroes/${hero.name}.png`}
+                      style={style.avatar}
+                      onLoad={onload}
+                    />
+                    <h4 className='detail-text'>{hero.name}</h4>
+                  </Fragment>
+                )}
+              </FadeIn>
             </div>
           </Col>
         );
@@ -120,8 +132,18 @@ class PlayerDetailCard extends Component {
         return (
           <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.name}>
             <div style={style.cursor} onClick={() => fetchHeroData(hero)}>
-              <Avatar size='large' src={`/images/heroes/${hero.name}.png`}/>
-              <p className='detail-text'>{hero.name}</p>
+              <FadeIn height={150}>
+                {onload => (
+                  <Fragment>
+                    <Avatar
+                      size='large'
+                      src={`/images/heroes/${hero.name}.png`}
+                      onLoad={onload}
+                    />
+                    <p className='detail-text'>{hero.name}</p>
+                  </Fragment>
+                )}
+              </FadeIn>
             </div>
           </Col>
         );
