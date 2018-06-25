@@ -132,9 +132,9 @@ class HeroDetail extends Component {
           width: '20%'
         },
         {
-          title: 'Most Critical Hits',
-          dataIndex: 'mostCriticalHits',
-          key: 'mostCriticalHits',
+          title: 'Most Final Blows',
+          dataIndex: 'mostFinalBlows',
+          key: 'mostFinalBlows',
           width: '20%'
         },
         {
@@ -177,7 +177,7 @@ class HeroDetail extends Component {
         mostKillsInGame: <p className='lead'>{value.best.eliminationsMostInGame || 'N/A'}</p>,
         mostMultiKills: <p className='lead'>{value.best.multikillsBest || 'N/A'}</p>,
         mostHeroDamageInGame: <p className='lead'>{value.best.heroDamageDoneMostInGame || 'N/A'}</p>,
-        mostCriticalHits: <p className='lead'>{value.best.criticalHitsMostInGame || 'N/A'}</p>,
+        mostFinalBlows: <p className='lead'>{value.best.finalBlowsMostInGame || 'N/A'}</p>,
         criticalHitsAccuracy: <p className='lead'>{value.combat.criticalHitsAccuracy || 'N/A'}</p>
       }];
 
