@@ -13,113 +13,137 @@ class HeroDetail extends Component {
   renderStatsTable() {
     const { data: { value } } = this.props.heroData;
     if (value) {
-      const columns1 = [{
-        title: 'K/D Ratio',
-        dataIndex: 'kd',
-        key: 'kd',
-        width: '20%'
-      }, {
-        title: 'Games Played',
-        dataIndex: 'gamesPlayed',
-        key: 'gamesPlayed',
-        width: '20%'
-      }, {
-        title: 'Win %',
-        dataIndex: 'winPercentage',
-        key: 'winPercentage',
-        width: '20%'
-      }, {
-        title: 'Weapon Accuracy',
-        dataIndex: 'weaponAccuracy',
-        key: 'weaponAccuracy',
-        width: '20%'
-      }, {
-        title: 'Damage Done',
-        dataIndex: 'damageDone',
-        key: 'damageDone',
-        width: '20%'
-      }];
+      const columns1 = [
+        {
+          title: 'K/D Ratio',
+          dataIndex: 'kd',
+          key: 'kd',
+          width: '20%'
+        },
+        {
+          title: 'Games Played',
+          dataIndex: 'gamesPlayed',
+          key: 'gamesPlayed',
+          width: '20%'
+        },
+        {
+          title: 'Win %',
+          dataIndex: 'winPercentage',
+          key: 'winPercentage',
+          width: '20%'
+        },
+        {
+          title: 'Weapon Accuracy',
+          dataIndex: 'weaponAccuracy',
+          key: 'weaponAccuracy',
+          width: '20%'
+        },
+        {
+          title: 'Damage Done',
+          dataIndex: 'damageDone',
+          key: 'damageDone',
+          width: '20%'
+        }
+    ];
 
-      const columns2 = [{
-        title: 'Avg. Damage',
-        dataIndex: 'avgDamage',
-        key: 'avgDamage',
-        width: '20%'
-      }, {
-        title: 'Hero Damage',
-        dataIndex: 'heroDamage',
-        key: 'heroDamage',
-        width: '20%'
-      }, {
-        title: 'Obj. Time',
-        dataIndex: 'objTime',
-        key: 'objTime',
-        width: '20%'
-      }, {
-        title: 'Time On Fire',
-        dataIndex: 'timeOnFire',
-        key: 'timeOnFire',
-        width: '20%'
-      }, {
-        title: 'Multikills',
-        dataIndex: 'multikills',
-        key: 'multikills',
-        width: '20%'
-      }];
+      const columns2 = [
+        {
+          title: 'Avg. Damage',
+          dataIndex: 'avgDamage',
+          key: 'avgDamage',
+          width: '20%'
+        },
+        {
+          title: 'Hero Damage',
+          dataIndex: 'heroDamage',
+          key: 'heroDamage',
+          width: '20%'
+        },
+        {
+          title: 'Obj. Time',
+          dataIndex: 'objTime',
+          key: 'objTime',
+          width: '20%'
+        },
+        {
+          title: 'Time On Fire',
+          dataIndex: 'timeOnFire',
+          key: 'timeOnFire',
+          width: '20%'
+        },
+        {
+          title: 'Multikills',
+          dataIndex: 'multikills',
+          key: 'multikills',
+          width: '20%'
+        }
+    ];
 
-      const columns3 = [{
-        title: 'Most Obj. Kills',
-        dataIndex: 'mostObjKills',
-        key: 'mostObjKills',
-        width: '20%'
-      }, {
-        title: 'Most Solo Kills',
-        dataIndex: 'mostSoloKills',
-        key: 'mostSoloKills',
-        width: '20%'
-      }, {
-        title: 'Most Kill Streaks',
-        dataIndex: 'mostKillStreaks',
-        key: 'mostKillStreaks',
-        width: '20%'
-      }, {
-        title: 'Most Critical Hits',
-        dataIndex: 'mostCriticalHits',
-        key: 'mostCriticalHits',
-        width: '20%'
-      }, {
-        title: 'Deaths',
-        dataIndex: 'deaths',
-        key: 'deaths',
-        width: '20%'
-      }];
+      const columns3 = [
+        {
+          title: 'Most Obj. Kills',
+          dataIndex: 'mostObjKills',
+          key: 'mostObjKills',
+          width: '20%'
+        },
+        {
+          title: 'Most Solo Kills',
+          dataIndex: 'mostSoloKills',
+          key: 'mostSoloKills',
+          width: '20%'
+        },
+        {
+          title: 'Most Kill Streaks',
+          dataIndex: 'mostKillStreaks',
+          key: 'mostKillStreaks',
+          width: '20%'
+        },
+        {
+          title: 'Most Critical Hits',
+          dataIndex: 'mostCriticalHits',
+          key: 'mostCriticalHits',
+          width: '20%'
+        },
+        {
+          title: 'Deaths',
+          dataIndex: 'deaths',
+          key: 'deaths',
+          width: '20%'
+        }
+    ];
 
-      const columns4 = [{
-        title: 'Most Kills in Game',
-        dataIndex: 'mostKillsInGame',
-        key: 'mostKillsInGame',
-        width: '20%'
-      }, {
-        title: 'Most Multikills',
-        dataIndex: 'mostMultiKills',
-        key: 'mostMultiKills',
-        width: '20%'
-      }, {
-        title: 'Most Hero Damage in Game',
-        dataIndex: 'mostHeroDamageInGame',
-        key: 'mostHeroDamageInGame',
-        width: '20%'
-      }, {
-        title: 'Most Critical Hits',
-        dataIndex: 'mostCriticalHits',
-        key: 'mostCriticalHits',
-        width: '20%'
-      }, {
-        title: 'Critical Hits Accuracy',
-        dataIndex: 'criticalHitsAccuracy',
-        key: 'criticalHitsAccuracy',
-        width: '20%'
-      }];
+      const columns4 = [
+        {
+          title: 'Most Kills in Game',
+          dataIndex: 'mostKillsInGame',
+          key: 'mostKillsInGame',
+          width: '20%'
+        },
+        {
+          title: 'Most Multikills',
+          dataIndex: 'mostMultiKills',
+          key: 'mostMultiKills',
+          width: '20%'
+        },
+        {
+          title: 'Most Hero Damage in Game',
+          dataIndex: 'mostHeroDamageInGame',
+          key: 'mostHeroDamageInGame',
+          width: '20%'
+        },
+        {
+          title: 'Most Critical Hits',
+          dataIndex: 'mostCriticalHits',
+          key: 'mostCriticalHits',
+          width: '20%'
+        },
+        {
+          title: 'Critical Hits Accuracy',
+          dataIndex: 'criticalHitsAccuracy',
+          key: 'criticalHitsAccuracy',
+          width: '20%'
+        }
+    ];
 
       const data1 = [{
         key: '1',
