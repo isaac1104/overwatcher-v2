@@ -28,7 +28,7 @@ const MostPlayedHeroes = props => {
       return (
         <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.name}>
           <div onClick={() => props.fetchHeroData(hero)} style={style.cursor}>
-            <FadeIn>
+            <FadeIn height={50}>
               {onload => (
                 <Fragment>
                   <Avatar

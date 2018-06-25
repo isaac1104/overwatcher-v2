@@ -37,7 +37,7 @@ const PlayerHeader = props => {
           backgroundSize: '100% 270%'
         }}>
         <Row type='flex' align='middle' style={style.row}>
-          <FadeIn>
+          <FadeIn height={50}>
             {onload => (
               <img
                 src={props.data.icon}
