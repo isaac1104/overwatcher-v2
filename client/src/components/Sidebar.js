@@ -12,13 +12,19 @@ class Sidebar extends Component {
     this.setState({ collapsed });
   };
   render() {
+    const style = {
+      sidebar: {
+        minHeight: '80vh'
+      }
+    }
+
     return (
       <Sider
         collapsible
         collapsedWidth="0"
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
-        style={{ minHeight: '80vh' }}
+        style={style.sidebar}
       >
         <div className="logo" />
         <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
