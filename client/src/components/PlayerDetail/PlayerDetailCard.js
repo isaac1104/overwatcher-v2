@@ -1,8 +1,10 @@
 import _ from 'lodash';
 import React, { Component, Fragment } from 'react';
+import PlayerHeader from './PlayerHeader';
+import MostPlayedHeroes from './MostPlayedHeroes';
+import AllPlayedHeroes from './AllPlayedHeroes';
 import HeroDetail from '../HeroDetail/HeroDetail';
-import { Avatar, Card, Divider, Icon, Row, Col } from 'antd';
-import { FadeIn } from 'react-lazyload-fadein';
+import { Card, Divider, Icon, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import { fetchHeroData } from '../../actions';
 
@@ -65,92 +67,6 @@ class PlayerDetailCard extends Component {
     }
   }
 
-  renderMostPlayedHeroes() {
-    const { playerData: { data }, fetchHeroData } = this.props;
-    const style = {
-      cursor: {
-        cursor: 'pointer'
-      },
-      avatar: {
-        width: '60px',
-        height: '60px',
-        borderRadius: '50%'
-      },
-      text: {
-        color: '#fff'
-      }
-    }
-    if (data.competitiveStats && data.competitiveStats.careerStats) {
-      const top3Heroes = _.map(data.competitiveStats.careerStats, (value, key) => {
-        return { name: key, value }
-      }).filter(hero => hero.name !== 'allHeroes').sort((a,b) => {
-        return b.value.game.gamesWon - a.value.game.gamesWon;
-      }).splice(0, 3);
-      return top3Heroes.map(hero => {
-        return (
-          <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.name}>
-            <div onClick={() => fetchHeroData(hero)} style={style.cursor}>
-              <FadeIn height={150}>
-                {onload => (
-                  <Fragment>
-                    <Avatar
-                      size='large'
-                      src={`/images/heroes/${hero.name}.png`}
-                      style={style.avatar}
-                      onLoad={onload}
-                    />
-                    <h4 className='detail-text'>{hero.name}</h4>
-                  </Fragment>
-                )}
-              </FadeIn>
-            </div>
-          </Col>
-        );
-      });
-    } else {
-      return <h1 style={style.text}>N/A</h1>
-    }
-  }
-
-  renderAllPlayedHeroes() {
-    const { playerData: { data }, fetchHeroData } = this.props;
-    const style = {
-      cursor: {
-        cursor: 'pointer'
-      },
-      text: {
-        color: '#fff'
-      }
-    }
-    if (data.competitiveStats && data.competitiveStats.careerStats) {
-      const allHeroes = _.map(data.competitiveStats.careerStats, (value, key) => {
-        return { name: key, value }
-      }).filter(hero => hero.name !== 'allHeroes');
-      return allHeroes.map(hero => {
-        return (
-          <Col xs={8} sm={8} md={6} lg={6} xl={4} key={hero.name}>
-            <div style={style.cursor} onClick={() => fetchHeroData(hero)}>
-              <FadeIn height={150}>
-                {onload => (
-                  <Fragment>
-                    <Avatar
-                      size='large'
-                      src={`/images/heroes/${hero.name}.png`}
-                      onLoad={onload}
-                    />
-                    <p className='detail-text'>{hero.name}</p>
-                  </Fragment>
-                )}
-              </FadeIn>
-            </div>
-          </Col>
-        );
-      });
-    } else {
-      return <h1 style={style.text}>N/A</h1>
-    }
-  }
-
   renderDetail() {
     const { data } = this.props.playerData;
     const style = {
@@ -166,7 +82,7 @@ class PlayerDetailCard extends Component {
     }
       return (
       <Fragment>
-        {this.renderMainHero()}
+        <PlayerHeader data={this.props.playerData.data} />
         <Row className='row'>
           <Col xs={24} sm={24} md={24} lg={12} xl={12} style={style.playerBackground}>
             <Card bordered={ false } style={style.playerBackground}>
@@ -211,7 +127,7 @@ class PlayerDetailCard extends Component {
                     bordered={ false }
                   >
                     <Row type='flex' justify='space-around' align='middle'>
-                      {this.renderMostPlayedHeroes()}
+                      <MostPlayedHeroes data={this.props.playerData.data} fetchHeroData={this.props.fetchHeroData} />
                     </Row>
                   </Card>
                   <Card
@@ -219,7 +135,7 @@ class PlayerDetailCard extends Component {
                     bordered= { false }
                   >
                     <Row style={{ paddingTop: '30px' }}>
-                      {this.renderAllPlayedHeroes()}
+                      <AllPlayedHeroes data={this.props.playerData.data} fetchHeroData={this.props.fetchHeroData} />
                     </Row>
                   </Card>
                 </Fragment>
