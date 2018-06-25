@@ -55,10 +55,8 @@ class PlayerDetailCard extends Component {
       return (
         <div style={{ backgroundColor: '#000' }}>
           <Row type='flex' align='middle' style={style.row}>
-            <img src={data.icon} alt='icon' style={style.image.icon} />
             <h1 style={style.text}>{data.name}</h1>
             <h3 style={style.text}>
-              <img src={data.ratingIcon} alt='icon' style={style.image.rating} />
               {data.ratingName}<Divider type='vertical' />{data.rating} Points<Divider type='vertical' />Lvl. {data.level}
             </h3>
           </Row>
