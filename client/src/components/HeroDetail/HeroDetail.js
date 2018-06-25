@@ -92,7 +92,33 @@ class HeroDetail extends Component {
         dataIndex: 'deaths',
         key: 'deaths',
         width: '20%'
+      }];
 
+      const columns4 = [{
+        title: 'Most Kills in Game',
+        dataIndex: 'mostKillsInGame',
+        key: 'mostKillsInGame',
+        width: '20%'
+      }, {
+        title: 'Most Multikills',
+        dataIndex: 'mostMultiKills',
+        key: 'mostMultiKills',
+        width: '20%'
+      }, {
+        title: 'Most Hero Damage in Game',
+        dataIndex: 'mostHeroDamageInGame',
+        key: 'mostHeroDamageInGame',
+        width: '20%'
+      }, {
+        title: 'Most Critical Hits',
+        dataIndex: 'mostCriticalHits',
+        key: 'mostCriticalHits',
+        width: '20%'
+      }, {
+        title: 'Critical Hits Accuracy',
+        dataIndex: 'criticalHitsAccuracy',
+        key: 'criticalHitsAccuracy',
+        width: '20%'
       }];
 
       const data1 = [{
@@ -122,11 +148,21 @@ class HeroDetail extends Component {
         deaths: <p className='lead'>{value.deaths.deaths || 'N/A'}</p>
       }];
 
+      const data4 = [{
+        key: '4',
+        mostKillsInGame: <p className='lead'>{value.best.eliminationsMostInGame || 'N/A'}</p>,
+        mostMultiKills: <p className='lead'>{value.best.multikillsBest || 'N/A'}</p>,
+        mostHeroDamageInGame: <p className='lead'>{value.best.heroDamageDoneMostInGame || 'N/A'}</p>,
+        mostCriticalHits: <p className='lead'>{value.best.criticalHitsMostInGame || 'N/A'}</p>,
+        criticalHitsAccuracy: <p className='lead'>{value.combat.criticalHitsAccuracy || 'N/A'}</p>
+      }];
+
       return (
         <Fragment>
           <Table columns={columns1} dataSource={data1} pagination={false} />
           <Table columns={columns2} dataSource={data2} pagination={false} />
           <Table columns={columns3} dataSource={data3} pagination={false} />
+          <Table columns={columns4} dataSource={data4} pagination={false} />
         </Fragment>
       );
     }
@@ -234,6 +270,7 @@ class HeroDetail extends Component {
   }
 
   render() {
+    console.log(this.props.heroData);
     return (
       <Fragment>
         {this.renderData()}
