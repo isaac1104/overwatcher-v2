@@ -294,7 +294,6 @@ class HeroDetail extends Component {
   }
 
   render() {
-    console.log(this.props.heroData);
     return (
       <Fragment>
         {this.renderData()}
