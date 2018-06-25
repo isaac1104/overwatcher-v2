@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import { Divider, Row } from 'antd';
+import { FadeIn } from 'react-lazyload-fadein';
 
 const PlayerHeader = props => {
   const style = {
@@ -36,10 +37,28 @@ const PlayerHeader = props => {
           backgroundSize: '100% 270%'
         }}>
         <Row type='flex' align='middle' style={style.row}>
-          <img src={props.data.icon} alt='icon' style={style.image.icon} />
+          <FadeIn>
+            {onload => (
+              <img
+                src={props.data.icon}
+                alt='icon'
+                style={style.image.icon}
+                onLoad={onload}
+              />
+            )}
+          </FadeIn>
           <h1 style={style.text}>{props.data.name}</h1>
           <h3 style={style.text}>
-            <img src={props.data.ratingIcon} alt='icon' style={style.image.rating} />
+            <FadeIn>
+              {onload => (
+                <img
+                  src={props.data.ratingIcon}
+                  alt='icon'
+                  style={style.image.rating}
+                  onLoad={onload}
+                />
+              )}
+            </FadeIn>
             {props.data.ratingName}<Divider type='vertical' />{props.data.rating} Points<Divider type='vertical' />Lvl. {props.data.level}
           </h3>
         </Row>
