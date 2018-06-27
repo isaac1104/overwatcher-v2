@@ -49,7 +49,7 @@ const PlayerHeader = props => {
           </FadeIn>
           <h1 style={style.text}>{props.data.name}</h1>
           <h3 style={style.text}>
-            <FadeIn>
+            <FadeIn height={50}>
               {onload => (
                 <img
                   src={props.data.ratingIcon}
