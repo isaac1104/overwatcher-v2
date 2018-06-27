@@ -22,7 +22,7 @@ const MostPlayedHeroes = props => {
     const top3Heroes = _.map(props.data.competitiveStats.careerStats, (value, key) => {
       return { name: key, value }
     }).filter(hero => hero.name !== 'allHeroes').sort((a,b) => {
-      return b.value.game.gamesWon - a.value.game.gamesWon;
+      return b.value.game.gamesPlayed - a.value.game.gamesPlayed;
     }).splice(0, 3);
     return top3Heroes.map(hero => {
       return (
