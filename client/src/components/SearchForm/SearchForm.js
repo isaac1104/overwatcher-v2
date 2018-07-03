@@ -15,17 +15,13 @@ class Form extends Component {
     const style = {
       form: {
         float: 'right',
-        marginTop: '12px'
-      },
-      button: {
-        marginLeft: '10px'
+        marginRight: '12px'
       }
     }
     return (
       <form onSubmit={handleSubmit(this.formSubmit)} style={style.form}>
         <Field
           name='battletag'
-          autoComplete='off'
           component={FormField}
         />
       </form>

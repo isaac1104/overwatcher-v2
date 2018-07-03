@@ -1,15 +1,14 @@
-import { createComponent, customMap } from 'redux-form-antd';
+import React from 'react';
 import { Input } from 'antd';
 const { Search } = Input;
 
-function mapFunction(mapProps, { input: { onChange } } ) {
-  return {
-    ...mapProps,
-    onChange: event => onChange(event.nativeEvent.target.value),
-  };
+const FormField = ({ input }) => {
+  return (
+    <Search
+      {...input}
+      autoComplete='off'
+    />
+  );
 }
-const textFieldMap = customMap(mapFunction);
-
-const FormField = createComponent(Search, textFieldMap);
 
 export default FormField;

@@ -18,7 +18,8 @@ class Navbar extends Component {
         marginBottom: '10px'
       },
       link: {
-        color: '#fff'
+        color: '#fff',
+        marginLeft: '12px'
       }
     }
 
