@@ -8,6 +8,8 @@ Full Battletag including numbers must be entered. Ex) Sinatraa-11809
 
 ## How to Run
 
+Visit https://overwatcher-v2.herokuapp.com/ or
+
 1. Clone this repo or download the zip file.
 
 2. Run `yarn` or `npm install` inside of root & client folder.
