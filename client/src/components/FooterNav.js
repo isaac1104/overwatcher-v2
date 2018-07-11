@@ -3,8 +3,12 @@ import { Divider, Icon, Layout } from 'antd';
 const { Footer } = Layout;
 
 const FooterNav = () => {
+  const style = {
+    textAlign: 'center'
+  }
+
   return (
-    <Footer style={{ textAlign: 'center' }}>
+    <Footer style={style}>
       OVERWATCHER V2 ©2018 Created by Isaac Kwon
       <Divider type='vertical' />
       <a href='https://github.com/isaac1104'>
