@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import ContentLayout from './Layout/ContentLayout';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 import FooterNav from './FooterNav';
 import Home from './Home';
 import PlayerDetail from './PlayerDetail/PlayerDetail';
@@ -18,7 +17,6 @@ class App extends Component {
           <Layout>
             <Navbar/>
             <Layout>
-              <Sidebar />
               <ContentLayout>
                 <Switch>
                   <Route exact path='/' component={Home} />
