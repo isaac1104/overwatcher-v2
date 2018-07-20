@@ -11,7 +11,7 @@ const style = {
     background: '#fff',
     padding: 24,
     margin: 0,
-    width: '80%'
+    width: '90%'
   }
 }
 
