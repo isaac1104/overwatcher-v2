@@ -1,6 +1,6 @@
 # Overwatcher V2
 
-![overwatcher](https://user-images.githubusercontent.com/28583016/42586559-42f4be80-84ed-11e8-861b-36ed5378458a.PNG)
+![capture](https://user-images.githubusercontent.com/28583016/43613343-e631101c-9663-11e8-9ed7-dbfccd88f91b.PNG)
 
 Overwatcher is a web application that lets users search for Overwatch stats.
 
