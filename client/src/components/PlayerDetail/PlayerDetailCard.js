@@ -12,10 +12,10 @@ class PlayerDetailCard extends Component {
     const { data } = this.props.playerData;
     const style = {
       playerBackground: {
-        backgroundColor: '#343a40'
+        backgroundColor: '#36393f'
       },
       heroBackground: {
-        backgroundColor: '#f0f2f5'
+        backgroundColor: '#36393f'
       },
       mostPlayed: {
         justifyContent: 'space-evenly'

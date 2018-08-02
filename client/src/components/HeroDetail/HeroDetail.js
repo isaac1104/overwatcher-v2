@@ -20,8 +20,8 @@ class HeroDetail extends Component {
         borderRadius: '50%',
         marginRight: '10px'
       },
-      background: {
-        backgroundColor: '#f0f2f5'
+      text: {
+        color: '#fff'
       },
       medals: {
         gold: {
@@ -38,16 +38,16 @@ class HeroDetail extends Component {
       header: {
         overflowX: 'auto'
       }
-    }
+    };
+
     if (value) {
       return (
         <Card
-          style={style.background}
           bordered={ false }
           title={
             <Row>
               <Col span={24} style={style.header}>
-                <h3>
+                <h3 style={style.text}>
                   <FadeIn height={600}>
                     {onload => (
                       <Avatar
@@ -94,19 +94,30 @@ class HeroDetail extends Component {
 
   renderData() {
     const { data } = this.props.playerData;
+    const style = {
+      text: {
+        error: {
+          color: '#ff4d4f'
+        },
+        normal: {
+          color: '#fff'
+        }
+      }
+    };
+
     if (!data.competitiveStats) {
       return (
         <Fragment>
-          <h1>Competitive Stats Are Not Available For This Player!</h1>
-          <h6>At least one competitive game has to be played</h6>
+          <h1 style={style.text.error}>Competitive Stats Are Not Available For This Player!</h1>
+          <h6 style={style.text.error}>At least one competitive game has to be played</h6>
         </Fragment>
       );
     }
     if (data.competitiveStats && !data.competitiveStats.careerStats) {
-      return <h1>Error Has Occured. Please Try Again Later</h1>
+      return <h1 style={style.text.error}>Error Has Occured. Please Try Again Later</h1>
     }
     if (_.isEmpty(this.props.heroData.data)) {
-      return <h1>Click a Hero Portarit To Display Hero Data</h1>
+      return <h1 style={style.text.normal}>Click a Hero Portarit To Display Hero Data</h1>
     } else {
       return this.renderHeroStats();
     }
