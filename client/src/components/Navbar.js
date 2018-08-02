@@ -8,7 +8,8 @@ class Navbar extends Component {
   render() {
     const style = {
       navbar: {
-        lineHeight: '64px'
+        lineHeight: '64px',
+        backgroundColor: '#202225'
       },
       logo: {
         width: 35,
@@ -24,8 +25,8 @@ class Navbar extends Component {
     };
 
     return (
-      <Header>
-        <Row type='flex' justify='space-between' align='middle' style={style.navbar}>
+      <Header style={style.navbar}>
+        <Row type='flex' justify='space-between' align='middle'>
           <Col xs={12} sm={12} md={12} lg={12} xl={12} style={style.div}>
             <Link to='/' style={style.link}>
               <img src='/images/misc/owlogo.svg' alt='logo' style={style.logo} /> OVERWATCHER V2

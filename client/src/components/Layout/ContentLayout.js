@@ -5,15 +5,16 @@ const { Content } = Layout;
 const style = {
   layout: {
     padding: '0 24px',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#2f3136'
   },
   content: {
-    background: '#fff',
+    backgroundColor: '#36393f',
     padding: 24,
     margin: 0,
     width: '90%'
   }
-}
+};
 
 const ContentLayout = props => {
   return (
