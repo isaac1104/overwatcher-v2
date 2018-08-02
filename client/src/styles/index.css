@@ -58,3 +58,7 @@ body {
   background-color: red;
   color: #fff;
 }
+
+.ant-row {
+  zoom: 0.9;
+}
