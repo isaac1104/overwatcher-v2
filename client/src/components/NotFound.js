@@ -7,7 +7,7 @@ const NotFound = () => {
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
-      height: '80vh'
+      minHeight: '100vh'
     },
     font: {
       h1: {
