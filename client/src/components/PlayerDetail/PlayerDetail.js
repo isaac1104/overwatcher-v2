@@ -32,7 +32,7 @@ class PlayerDetail extends Component {
         minWidth: '250px',
         minHeight: '250px'
       }
-    }
+    };
 
     if (error) {
       return <Redirect to='/player/notfound' />
