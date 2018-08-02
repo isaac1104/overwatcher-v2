@@ -21,7 +21,7 @@ class Navbar extends Component {
         color: '#fff',
         marginLeft: '12px'
       }
-    }
+    };
 
     return (
       <Header>

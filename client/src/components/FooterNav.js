@@ -4,12 +4,14 @@ const { Footer } = Layout;
 
 const FooterNav = () => {
   const style = {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+    backgroundColor: '#202225',
+    color: '#fff'
+  };
 
   return (
     <Footer style={style}>
-      OVERWATCHER V2 ©2018 Created by Isaac Kwon
+      OVERWATCHER V2 ©2018 by Isaac Kwon
       <Divider type='vertical' />
       <a href='https://github.com/isaac1104'>
         <Icon type='github' />
