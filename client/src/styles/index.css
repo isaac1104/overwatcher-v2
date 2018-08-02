@@ -43,3 +43,18 @@ body {
 .detail-text {
   color: #fff !important
 }
+
+.ant-table-thead > tr > th {
+  background-color: #2f3136;
+  color: #fff;
+}
+
+.ant-table-tbody > tr > td {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.ant-table-tbody > tr:hover {
+  background-color: red;
+  color: #fff;
+}
