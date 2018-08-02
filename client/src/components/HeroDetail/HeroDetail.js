@@ -26,7 +26,8 @@ class HeroDetail extends Component {
       medals: {
         gold: {
           backgroundColor: 'gold',
-          marginLeft: '10px'
+          marginLeft: '10px',
+          color: '#000'
         },
         silver: {
           backgroundColor: 'silver'
@@ -117,7 +118,7 @@ class HeroDetail extends Component {
       return <h1 style={style.text.error}>Error Has Occured. Please Try Again Later</h1>
     }
     if (_.isEmpty(this.props.heroData.data)) {
-      return <h1 style={style.text.normal}>Click a Hero Portarit To Display Hero Data</h1>
+      return <h1 style={style.text.normal}>Click a Hero Portrait To Display Hero Data</h1>
     } else {
       return this.renderHeroStats();
     }
