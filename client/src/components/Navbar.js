@@ -9,7 +9,10 @@ class Navbar extends Component {
     const style = {
       navbar: {
         lineHeight: '64px',
-        backgroundColor: '#202225'
+        backgroundColor: '#202225',
+        position: 'fixed',
+        width: '100%',
+        zIndex: 1
       },
       logo: {
         width: 35,

@@ -7,7 +7,7 @@ const Home = () => {
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
-      minHeight: '80vh'
+      minHeight: '100vh'
     },
     font: {
       h1: {
