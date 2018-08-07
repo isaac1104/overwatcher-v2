@@ -93,7 +93,7 @@ class PlayerDetailCard extends Component {
         </Row>
       </Fragment>
     );
-  }
+  };
 
   render() {
     return (
@@ -108,6 +108,6 @@ function mapStateToProps({ playerData }) {
   return {
     playerData
   }
-}
+};
 
 export default connect(mapStateToProps, { fetchHeroData })(PlayerDetailCard);

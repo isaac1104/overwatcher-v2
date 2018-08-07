@@ -11,7 +11,8 @@ const AllPlayedHeroes = props => {
     text: {
       color: '#fff'
     }
-  }
+  };
+
   if (props.data.competitiveStats && props.data.competitiveStats.careerStats) {
     const allHeroes = _.map(props.data.competitiveStats.careerStats, (value, key) => {
       return { name: key, value }
@@ -39,6 +40,6 @@ const AllPlayedHeroes = props => {
   } else {
     return <h1 style={style.text}>N/A</h1>
   }
-}
+};
 
 export default AllPlayedHeroes;

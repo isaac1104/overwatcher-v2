@@ -9,18 +9,18 @@ class PlayerDetail extends Component {
   componentDidMount() {
     const { fetchPlayerData, match: { params: { id } } } = this.props;
     fetchPlayerData(id);
-  }
+  };
 
   componentDidUpdate(prevProps) {
     const { fetchPlayerData, match: { params: { id } } } = this.props;
     if (prevProps.match.params.id !== id) {
       fetchPlayerData(id);
     }
-  }
+  };
 
   componentWillUnmount() {
     this.props.resetPlayerData();
-  }
+  };
 
   renderPlayerDetail() {
     const { error, isFetching } = this.props.playerData;
@@ -52,7 +52,7 @@ class PlayerDetail extends Component {
     } else {
       return <PlayerDetailCard />
     }
-  }
+  };
 
   render() {
     return (
@@ -67,6 +67,6 @@ function mapStateToProps({ playerData }) {
   return {
     playerData
   }
-}
+};
 
 export default connect(mapStateToProps, { fetchPlayerData, resetPlayerData })(PlayerDetail);

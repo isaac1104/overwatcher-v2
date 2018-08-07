@@ -16,7 +16,7 @@ const MostPlayedHeroes = props => {
     text: {
       color: '#fff'
     }
-  }
+  };
 
   if (props.data.competitiveStats && props.data.competitiveStats.careerStats) {
     const top3Heroes = _.map(props.data.competitiveStats.careerStats, (value, key) => {
@@ -48,6 +48,6 @@ const MostPlayedHeroes = props => {
   } else {
     return <h1 style={style.text}>N/A</h1>
   }
-}
+};
 
 export default MostPlayedHeroes;

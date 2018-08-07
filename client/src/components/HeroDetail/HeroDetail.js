@@ -9,7 +9,7 @@ import { FadeIn } from 'react-lazyload-fadein';
 class HeroDetail extends Component {
   componentWillUnmount() {
     this.props.resetHeroData();
-  }
+  };
 
   renderHeroStats() {
     const { data, data: { value } } = this.props.heroData;
@@ -91,7 +91,7 @@ class HeroDetail extends Component {
         </Card>
       );
     }
-  }
+  };
 
   renderData() {
     const { data } = this.props.playerData;
@@ -122,7 +122,7 @@ class HeroDetail extends Component {
     } else {
       return this.renderHeroStats();
     }
-  }
+  };
 
   render() {
     return (
@@ -138,6 +138,6 @@ function mapStateToProps({ heroData, playerData }) {
     heroData,
     playerData
   }
-}
+};
 
 export default connect(mapStateToProps, { resetHeroData })(HeroDetail);

@@ -182,6 +182,6 @@ const HeroDetailTable = props => {
   } else {
     return <div />
   }
-}
+};
 
 export default HeroDetailTable;
