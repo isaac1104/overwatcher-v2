@@ -159,7 +159,7 @@ const HeroDetailTable = props => {
       mostSoloKills: <p className='lead'>{props.value.best.soloKillsMostInGame || 'N/A'}</p>,
       mostKillStreaks: <p className='lead'>{props.value.best.killsStreakBest || 'N/A'}</p>,
       mostCriticalHits: <p className='lead'>{props.value.best.criticalHitsMostInGame || 'N/A'}</p>,
-      deaths: <p className='lead'>{props.value.deaths.deaths || 'N/A'}</p>
+      deaths: <p className='lead'>{props.value.deaths || 'N/A'}</p>
     }];
 
     const data4 = [{
@@ -170,7 +170,6 @@ const HeroDetailTable = props => {
       mostFinalBlows: <p className='lead'>{props.value.best.finalBlowsMostInGame || 'N/A'}</p>,
       criticalHitsAccuracy: <p className='lead'>{props.value.combat.criticalHitsAccuracy || 'N/A'}</p>
     }];
-
     return (
       <Fragment>
         <Table columns={columns1} dataSource={data1} pagination={false} />
