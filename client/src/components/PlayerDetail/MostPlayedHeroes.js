@@ -1,7 +1,6 @@
 import _ from 'lodash';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Avatar, Col } from 'antd';
-import { FadeIn } from 'react-lazyload-fadein';
 
 const MostPlayedHeroes = props => {
   const style = {
@@ -28,19 +27,12 @@ const MostPlayedHeroes = props => {
       return (
         <Col xs={8} sm={8} md={8} lg={8} xl={8} key={hero.name}>
           <div onClick={() => props.fetchHeroData(hero)} style={style.cursor}>
-            <FadeIn height={50}>
-              {onload => (
-                <Fragment>
-                  <Avatar
-                    size='large'
-                    src={`/images/heroes/${hero.name}.png`}
-                    style={style.avatar}
-                    onLoad={onload}
-                  />
-                  <h4 className='detail-text'>{hero.name}</h4>
-                </Fragment>
-              )}
-            </FadeIn>
+            <Avatar
+              size='large'
+              src={`/images/heroes/${hero.name}.png`}
+              style={style.avatar}
+            />
+            <h4 className='detail-text'>{hero.name}</h4>
           </div>
         </Col>
       );

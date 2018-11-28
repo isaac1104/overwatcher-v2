@@ -4,7 +4,6 @@ import HeroDetailTable from './HeroDetailTable';
 import { connect } from 'react-redux';
 import { resetHeroData } from '../../actions';
 import { Avatar, Badge, Card, Divider, Row, Col } from 'antd';
-import { FadeIn } from 'react-lazyload-fadein';
 
 class HeroDetail extends Component {
   componentWillUnmount() {
@@ -49,17 +48,12 @@ class HeroDetail extends Component {
             <Row>
               <Col span={24} style={style.header}>
                 <h3 style={style.text}>
-                  <FadeIn height={600}>
-                    {onload => (
-                      <Avatar
-                        style={style.avatar}
-                        icon='user'
-                        size='large'
-                        src={`/images/heroes/${data.name}.png`}
-                        onLoad={onload}
-                      />
-                    )}
-                  </FadeIn>
+                  <Avatar
+                    style={style.avatar}
+                    icon='user'
+                    size='large'
+                    src={`/images/heroes/${data.name}.png`}
+                  />
                   {data.name}
                   <Divider type='vertical' />
                   {value.game.gamesWon || 0} Wins
